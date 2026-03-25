@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://wjihatvedc47"]
+
+[ext_resource type="Script" uid="uid://q1njm41b3ngf" path="res://scripts/camera/camera_spring_arm.gd" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://cl0myrakc0iji" path="res://scripts/player/ball_controller.gd" id="2_4l9m1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sgp6g"]
+bounce = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sgp6g"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_sgp6g"]
+
+[node name="Node3D" type="Node3D" unique_id=1766780046]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1441180418]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2, 0)
+
+[node name="Terrain" type="Node3D" parent="." unique_id=1433074836]
+
+[node name="Box1" type="CSGBox3D" parent="Terrain" unique_id=4189172]
+transform = Transform3D(1, 0, 0, 0, 0.9595256, -0.2816214, 0, 0.2816214, 0.9595256, 0.27722168, 0.5892191, 0)
+use_collision = true
+size = Vector3(17.183838, 1, 10)
+
+[node name="Box2" type="CSGBox3D" parent="Terrain" unique_id=823354674]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12973642, -0.57822275, 112.221725)
+use_collision = true
+size = Vector3(17.20227, 1, 138.66498)
+
+[node name="Box3" type="CSGBox3D" parent="Terrain" unique_id=2055791628]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14233398, -0.6222482, 37.98316)
+use_collision = true
+size = Vector3(17.046387, 1, 10)
+
+[node name="Box4" type="CSGBox3D" parent="Terrain" unique_id=1778025865]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14233398, -0.6222482, 28.406254)
+use_collision = true
+size = Vector3(17.046387, 1, 10)
+
+[node name="Box5" type="CSGBox3D" parent="Terrain" unique_id=331255873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14233398, -0.6222482, 18.451847)
+use_collision = true
+size = Vector3(17.046387, 1, 10)
+
+[node name="Box6" type="CSGBox3D" parent="Terrain" unique_id=2121990893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14233398, -0.6222482, 8.494949)
+use_collision = true
+size = Vector3(17.046387, 1, 10)
+
+[node name="Box7" type="CSGBox3D" parent="Terrain" unique_id=1699548047]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9135437, 1.4363322, 20.231056)
+use_collision = true
+size = Vector3(0.57318115, 3.0135498, 0.43499756)
+
+[node name="Box8" type="CSGBox3D" parent="Terrain" unique_id=952295157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9135437, 1.4363322, 22.619507)
+use_collision = true
+size = Vector3(0.57318115, 3.0135498, 0.43499756)
+
+[node name="Box9" type="CSGBox3D" parent="Terrain" unique_id=537963032]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0900555, 1.4363322, 25.86578)
+use_collision = true
+size = Vector3(0.57318115, 3.0135498, 0.43499756)
+
+[node name="Box11" type="CSGBox3D" parent="Terrain" unique_id=991071160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0900555, 1.4363322, 27.847107)
+use_collision = true
+size = Vector3(0.57318115, 3.0135498, 0.43499756)
+
+[node name="Box12" type="CSGBox3D" parent="Terrain" unique_id=1511739267]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0900555, 1.4363322, 36.672188)
+use_collision = true
+size = Vector3(0.57318115, 3.0135498, 0.43499756)
+
+[node name="Box13" type="CSGBox3D" parent="Terrain" unique_id=65247086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.070299, 1.4363322, 55.96379)
+use_collision = true
+size = Vector3(0.57318115, 3.0135498, 0.43499756)
+
+[node name="Box14" type="CSGBox3D" parent="Terrain" unique_id=441074801]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.076133, 1.4363322, 55.96379)
+use_collision = true
+size = Vector3(0.57318115, 3.0135498, 0.43499756)
+
+[node name="Box15" type="CSGBox3D" parent="Terrain" unique_id=889816010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5057592, 1.4363322, 43.20589)
+use_collision = true
+size = Vector3(0.57318115, 3.0135498, 0.43499756)
+
+[node name="Box10" type="CSGBox3D" parent="Terrain" unique_id=512550688]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9135437, 1.4363322, 24.328064)
+use_collision = true
+size = Vector3(0.57318115, 3.0135498, 0.43499756)
+
+[node name="Player" type="Node3D" parent="." unique_id=1325489060]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.963634, 0)
+
+[node name="ball" type="RigidBody3D" parent="Player" unique_id=2021060262]
+physics_material_override = SubResource("PhysicsMaterial_sgp6g")
+script = ExtResource("2_4l9m1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/ball" unique_id=1086850102]
+shape = SubResource("SphereShape3D_sgp6g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/ball" unique_id=802634968]
+mesh = SubResource("SphereMesh_sgp6g")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Player" unique_id=622782926]
+spring_length = 2.0
+script = ExtResource("1_o5qli")
+
+[node name="Camera3D" type="Camera3D" parent="Player/SpringArm3D" unique_id=1091844823]

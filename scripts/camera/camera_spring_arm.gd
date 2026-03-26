@@ -4,7 +4,7 @@ extends SpringArm3D
 ## - No user orbit/input control
 ## - SpringArm rotation is fixed so the camera looks down +Z
 ## - SpringArm position follows the ball so the ball stays centered
-@export var fixed_pitch_deg: float = -20.0
+@export var fixed_pitch_deg: float = -30.0
 @export var fixed_yaw_deg: float = 180.0 # positions camera behind the ball when downhill is +Z
 @export var follow_offset: Vector3 = Vector3(0, 1.2, 0) # relative to ball center
 @export var follow_smoothing_hz: float = 40.0

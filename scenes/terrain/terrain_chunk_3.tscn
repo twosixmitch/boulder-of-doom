@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cbgcav7pawt80"]
+
+[ext_resource type="Material" uid="uid://bm8m6alb8sopa" path="res://materials/dark_prototype_standard_material_3d.tres" id="1_ljybn"]
+
+[node name="CSGCombiner3D3" type="CSGCombiner3D" unique_id=230092393]
+use_collision = true
+
+[node name="Start" type="CSGBox3D" parent="." unique_id=316984498]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.9453144)
+size = Vector3(20, 1, 5.890625)
+material = ExtResource("1_ljybn")
+
+[node name="End" type="CSGBox3D" parent="." unique_id=1381252854]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 47.12374)
+size = Vector3(20, 1, 1.4242859)
+material = ExtResource("1_ljybn")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=908292602]
+transform = Transform3D(1, 0, 0, 0, 0.9442444, -0.32924578, 0, 0.32924578, 0.9442444, 0, -1.1280189, 8.997133)
+size = Vector3(20, 1, 6.477051)
+material = ExtResource("1_ljybn")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1238749587]
+transform = Transform3D(1, 0, 0, 0, 0.9938649, 0.11060165, 0, -0.11060165, 0.9938649, 0, -1.7083316, 18.551647)
+size = Vector3(20, 1, 13.5928955)
+material = ExtResource("1_ljybn")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=2037902473]
+transform = Transform3D(1, 0, 0, 0, 0.9927385, -0.1202928, 0, 0.1202928, 0.9927385, 0, -1.9990201, 31.060875)
+size = Vector3(20, 1, 13.5928955)
+material = ExtResource("1_ljybn")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=645631717]
+transform = Transform3D(1, 0, 0, 0, 0.9611318, 0.27609026, 0, -0.27609026, 0.9611318, 0, -1.9990201, 40.002525)
+size = Vector3(20, 1, 13.5928955)
+material = ExtResource("1_ljybn")

@@ -5,50 +5,80 @@ extends RigidBody3D
 ## - `ui_left`  -> steer left (arrow left / A depending on your input map)
 ## - `ui_right` -> steer right (arrow right / D depending on your input map)
 @export var steer_force: float = 45.0
-@export var max_lateral_speed: float = 8.0
-@export var lateral_friction: float = 8.0
+@export var max_lateral_speed: float = 1.2
+@export var lateral_friction: float = 6.0
 
 ## Keep the ball rolling downhill by enforcing a minimum forward speed.
-## Your world is oriented so downhill is +Z (by default).
-## If your ball actually moves in -Z, set this to (0, 0, -1).
 @export var downhill_dir: Vector3 = Vector3(0, 0, 1)
-@export var min_forward_speed: float = 4.0
-@export var forward_drive_strength: float = 2.0 # higher = snaps back to min speed faster
-@export var max_forward_force: float = 200.0 # safety clamp (N)
+@export var min_forward_speed: float = 8.0
+@export var forward_drive_strength: float = 2.0
+@export var max_forward_force: float = 200.0
+@export var max_downhill_speed: float = 15.0
+
 
 func _physics_process(delta: float) -> void:
-	# Inverted so arrow directions match the intended on-screen steering.
-	var steer_axis := -Input.get_axis("ui_left", "ui_right") # -1..1
+	var downhill := _downhill_direction()
+	_apply_downhill_drive(downhill)
 
-	# Apply forward drive if the ball slows down (e.g., after impacts).
-	# This only kicks in when `v.z` is below `min_forward_speed`.
-	var downhill := downhill_dir
-	if downhill.length() > 0.001:
-		downhill = downhill.normalized()
-	else:
-		downhill = Vector3(0, 0, 1)
+	_clamp_lateral_speed()
+	_clamp_downhill_speed(downhill)
 
-	# Forward speed along the configured downhill axis.
-	var v_forward: float = linear_velocity.dot(downhill)
-	if min_forward_speed > 0.0 and v_forward < min_forward_speed:
-		var dv: float = min_forward_speed - v_forward
-		var desired_force: float = dv * forward_drive_strength * mass
-		var clamped_force: float = clamp(desired_force, 0.0, max_forward_force)
-		if clamped_force > 0.0:
-			apply_force(downhill * clamped_force)
+	_apply_lateral_control(delta)
 
-	# Always clamp lateral speed so the ball doesn't drift too far sideways.
-	var v: Vector3 = linear_velocity
-	if abs(v.x) > max_lateral_speed:
-		v.x = sign(v.x) * max_lateral_speed
-		linear_velocity = v
 
+func _downhill_direction() -> Vector3:
+	if downhill_dir.length() > 0.001:
+		return downhill_dir.normalized()
+	return Vector3(0, 0, 1)
+
+
+func _apply_downhill_drive(downhill: Vector3) -> void:
+	if min_forward_speed <= 0.0:
+		return
+	
+	var v_forward := linear_velocity.dot(downhill)
+	if v_forward >= min_forward_speed:
+		return
+	
+	var dv: float = min_forward_speed - v_forward
+	var desired_force: float = dv * forward_drive_strength * mass
+	var clamped_force: float = clampf(desired_force, 0.0, max_forward_force)
+	
+	if clamped_force > 0.0:
+		apply_force(downhill * clamped_force)
+
+
+func _clamp_lateral_speed() -> void:
+	if abs(linear_velocity.x) <= max_lateral_speed:
+		return
+	
+	var v := linear_velocity
+	v.x = sign(v.x) * max_lateral_speed
+	linear_velocity = v
+
+
+func _clamp_downhill_speed(downhill: Vector3) -> void:
+	if max_downhill_speed <= 0.0:
+		return
+
+	var v_forward := linear_velocity.dot(downhill)
+	if v_forward <= max_downhill_speed:
+		return
+	
+	linear_velocity += downhill * (max_downhill_speed - v_forward)
+
+
+func _apply_lateral_control(delta: float) -> void:
+	var steer_axis := -Input.get_axis("ui_left", "ui_right")
+	
 	if abs(steer_axis) > 0.001:
-		# With your map oriented so downhill is +Z, left/right steering is world X.
 		apply_force(Vector3(steer_axis * steer_force, 0.0, 0.0))
 	else:
-		# When no input is pressed, reduce sideways velocity to keep the ball centered.
-		var t: float = clamp(lateral_friction * delta, 0.0, 1.0)
-		v = linear_velocity
-		v.x = lerp(v.x, 0.0, t)
-		linear_velocity = v
+		_damp_lateral_motion(delta)
+
+
+func _damp_lateral_motion(delta: float) -> void:
+	var t: float = clampf(lateral_friction * delta, 0.0, 1.0)
+	var v := linear_velocity
+	v.x = lerp(v.x, 0.0, t)
+	linear_velocity = v

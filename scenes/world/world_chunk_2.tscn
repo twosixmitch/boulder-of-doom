@@ -1,76 +1,84 @@
 [gd_scene format=3 uid="uid://dktjoapen4s25"]
 
 [ext_resource type="Material" uid="uid://bm8m6alb8sopa" path="res://materials/dark_prototype_standard_material_3d.tres" id="1_1irws"]
+[ext_resource type="Script" uid="uid://cdyb3e527o21c" path="res://scripts/world/world_chunk.gd" id="1_rty05"]
 
-[node name="CSGCombiner3D2" type="CSGCombiner3D" unique_id=271005236]
+[node name="WorldChunk" type="Node3D" unique_id=1534850308 node_paths=PackedStringArray("end_connection")]
+script = ExtResource("1_rty05")
+end_connection = NodePath("EndConnection")
+
+[node name="EndConnection" type="Node3D" parent="." unique_id=1221457697]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 48.182373)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="." unique_id=271005236]
 use_collision = true
 
-[node name="Start" type="CSGBox3D" parent="." unique_id=502034946]
+[node name="Start" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=502034946]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.9453144)
 size = Vector3(20, 1, 5.890625)
 material = ExtResource("1_1irws")
 
-[node name="End" type="CSGBox3D" parent="." unique_id=2074128688]
-transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 47.12374)
-size = Vector3(20, 1, 1.4242859)
+[node name="End" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=2074128688]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, -0.14350939, 47.183136)
+size = Vector3(20, 1, 2)
 material = ExtResource("1_1irws")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=839486748]
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=839486748]
 transform = Transform3D(1, 0, 0, 0, 0.9442444, -0.32924578, 0, 0.32924578, 0.9442444, 0, -1.958649, 11.379295)
 size = Vector3(20, 1, 11.522705)
 material = ExtResource("1_1irws")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=289915318]
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=289915318]
 transform = Transform3D(1, 0, 0, 0, 0.9612618, 0.2756374, 0, -0.2756374, 0.9612618, 0, -2.8493419, 18.551647)
 size = Vector3(20, 1, 13.5928955)
 material = ExtResource("1_1irws")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=392642487]
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=392642487]
 transform = Transform3D(1, 0, 0, 0, 0.9927385, -0.1202928, 0, 0.1202928, 0.9927385, 0, -1.9650164, 31.060875)
 size = Vector3(20, 1, 13.5928955)
 material = ExtResource("1_1irws")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=730092588]
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=730092588]
 transform = Transform3D(1, 0, 0, 0, 0.9611318, 0.27609026, 0, -0.27609026, 0.9611318, 0, -1.9990201, 40.002525)
 size = Vector3(20, 1, 13.5928955)
 material = ExtResource("1_1irws")
 
-[node name="Tree" type="CSGBox3D" parent="." unique_id=1867937014]
+[node name="Tree" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=1867937014]
 transform = Transform3D(1, 0, 0, 0, 0.9612619, 0.27563742, 0, -0.27563742, 0.9612619, 0.95155334, 1.0818399, 46.164513)
 size = Vector3(0.2253418, 1.7659302, 0.2649002)
 material = ExtResource("1_1irws")
 
-[node name="Tree2" type="CSGBox3D" parent="." unique_id=1660843537]
+[node name="Tree2" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=1660843537]
 transform = Transform3D(1, 0, 0, 0, 0.9612619, 0.27563742, 0, -0.27563742, 0.9612619, 2.7707887, 0.81184876, 44.92385)
 size = Vector3(0.2253418, 1.7659302, 0.2649002)
 material = ExtResource("1_1irws")
 
-[node name="Tree3" type="CSGBox3D" parent="." unique_id=1751550425]
+[node name="Tree3" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=1751550425]
 transform = Transform3D(1, 0, 0, 0, 0.9612619, 0.27563742, 0, -0.27563742, 0.9612619, 2.7707887, 0.36721098, 43.651283)
 size = Vector3(0.2253418, 1.7659302, 0.2649002)
 material = ExtResource("1_1irws")
 
-[node name="Tree4" type="CSGBox3D" parent="." unique_id=1001068720]
+[node name="Tree4" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=1001068720]
 transform = Transform3D(0.9999968, -0.0014143528, 0.0021150436, 0.0007635363, 0.9597645, 0.28080606, -0.0024270995, -0.28080356, 0.95976245, 4.1713667, 0.44118202, 43.651283)
 size = Vector3(0.2253418, 1.7659302, 0.2649002)
 material = ExtResource("1_1irws")
 
-[node name="Tree5" type="CSGBox3D" parent="." unique_id=1824191671]
+[node name="Tree5" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=1824191671]
 transform = Transform3D(1, 0, 0, 0, 0.9612619, 0.27563742, 0, -0.27563742, 0.9612619, 4.1713667, -0.24445474, 41.24121)
 size = Vector3(0.2253418, 1.7659302, 0.2649002)
 material = ExtResource("1_1irws")
 
-[node name="Tree6" type="CSGBox3D" parent="." unique_id=822210761]
+[node name="Tree6" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=822210761]
 transform = Transform3D(1, 0, 0, 0, 0.9612619, 0.27563745, 0, -0.27563742, 0.96126205, 6.5804634, -0.9015883, 21.614525)
 size = Vector3(1.28302, 1.7659302, 1.5474262)
 material = ExtResource("1_1irws")
 
-[node name="Tree7" type="CSGBox3D" parent="." unique_id=253999934]
+[node name="Tree7" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=253999934]
 transform = Transform3D(1, 0, 0, 0, 0.97081304, -0.23983842, 0, 0.23983839, 0.97081316, 6.6579823, 0.14073014, 22.024525)
 size = Vector3(1.28302, 0.30207825, 1.5474262)
 material = ExtResource("1_1irws")
 
-[node name="Tree8" type="CSGBox3D" parent="." unique_id=1229176203]
+[node name="Tree8" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=1229176203]
 transform = Transform3D(0.9994611, 0.009908296, 0.03129472, -0.029307865, 0.69873685, 0.7147785, -0.014784519, -0.7153104, 0.69865084, 6.6579823, -0.11297095, 20.78584)
 size = Vector3(1.28302, 0.30207825, 1.5474262)
 material = ExtResource("1_1irws")

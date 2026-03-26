@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://bacscfikukuxk"]
 
+[ext_resource type="Script" uid="uid://cdyb3e527o21c" path="res://scripts/world/world_chunk.gd" id="1_6836m"]
 [ext_resource type="Material" uid="uid://bm8m6alb8sopa" path="res://materials/dark_prototype_standard_material_3d.tres" id="1_y0u7c"]
 
-[node name="TerrainChunk1" type="Node3D" unique_id=1727605181]
+[node name="WorldChunk1" type="Node3D" unique_id=1727605181 node_paths=PackedStringArray("end_connection")]
+script = ExtResource("1_6836m")
+end_connection = NodePath("EndConnection")
+
+[node name="EndConnection" type="Node3D" parent="." unique_id=152081666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
 
 [node name="Terrain" type="CSGCombiner3D" parent="." unique_id=762513538]
 use_collision = true

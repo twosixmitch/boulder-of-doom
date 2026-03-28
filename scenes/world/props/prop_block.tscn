@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://wiug3jvcqbi"]
 
-[ext_resource type="Script" uid="uid://df0746k8hngk5" path="res://scripts/world/prop_object.gd" id="1_3rpp7"]
+[ext_resource type="Script" uid="uid://df0746k8hngk5" path="res://scripts/world/prop_rigid_body.gd" id="2_c2d6m"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_57k3y"]
 friction = 0.2
@@ -10,7 +10,7 @@ bounce = 0.5
 
 [sub_resource type="BoxMesh" id="BoxMesh_nqyom"]
 
-[node name="RigidBody3D" type="RigidBody3D" unique_id=841671413 groups=["props"]]
+[node name="Block" type="RigidBody3D" unique_id=841671413 groups=["props"]]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 4
 collision_mask = 7
@@ -20,7 +20,7 @@ sleeping = true
 contact_monitor = true
 max_contacts_reported = 1
 angular_damp = 4.0
-script = ExtResource("1_3rpp7")
+script = ExtResource("2_c2d6m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2061206734]
 shape = SubResource("BoxShape3D_nqyom")

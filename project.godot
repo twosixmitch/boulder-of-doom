@@ -15,6 +15,11 @@ run/main_scene="uid://wjihatvedc47"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*res://scripts/autoload/game_manager.gd"
+Events="*uid://bi26jmwshkgve"
+
 [display]
 
 window/size/viewport_width=1179

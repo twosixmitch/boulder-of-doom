@@ -1,4 +1,6 @@
-extends RigidBody3D
+class_name PropRigidBody extends RigidBody3D
+
+@export var prop_type: Enums.PropType
 
 var _activated: bool = false
 var _ready_to_activate: bool = false
@@ -37,8 +39,10 @@ func _can_activate_from_body(body) -> bool:
 	return true
 
 
-func activate():	
+func activate():
 	print("activate: %s" % self.name)
-	_activated = true 
+	_activated = true
 	gravity_scale = 1.0
 	call_deferred("set_contact_monitor", false)
+	
+	GameManager.prop_hit(prop_type, global_position)

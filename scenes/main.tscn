@@ -1,51 +1,29 @@
 [gd_scene format=3 uid="uid://wjihatvedc47"]
 
-[ext_resource type="Script" uid="uid://q1njm41b3ngf" path="res://scripts/camera/camera_spring_arm.gd" id="1_o5qli"]
-[ext_resource type="Script" uid="uid://ds6blali6cxtd" path="res://scripts/player/player_controller.gd" id="1_tefeu"]
-[ext_resource type="Script" uid="uid://cl0myrakc0iji" path="res://scripts/player/ball_controller.gd" id="2_4l9m1"]
-[ext_resource type="Texture2D" uid="uid://cw76mcnfadk8i" path="res://textures/prototype/Dark/texture_01.png" id="2_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://dpsowi22khrfd" path="res://scenes/player.tscn" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bacscfikukuxk" path="res://scenes/world/world_chunk_1.tscn" id="4_jyhfs"]
 [ext_resource type="Script" uid="uid://b7tx20w1crvj6" path="res://scripts/world/world_manager.gd" id="4_tbgi4"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sgp6g"]
-bounce = 0.2
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_sgp6g"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tefeu"]
-albedo_texture = ExtResource("2_jyhfs")
-
-[sub_resource type="SphereMesh" id="SphereMesh_sgp6g"]
+[ext_resource type="Script" uid="uid://duwh68pwgeean" path="res://scripts/ui/fps_counter.gd" id="4_tefeu"]
 
 [node name="Main" type="Node3D" unique_id=1766780046]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1441180418]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2, 0)
 
-[node name="Player" type="Node3D" parent="." unique_id=1325489060 node_paths=PackedStringArray("ball")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
-script = ExtResource("1_tefeu")
-ball = NodePath("ball")
-
-[node name="ball" type="RigidBody3D" parent="Player" unique_id=2021060262]
-physics_material_override = SubResource("PhysicsMaterial_sgp6g")
-script = ExtResource("2_4l9m1")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/ball" unique_id=1086850102]
-shape = SubResource("SphereShape3D_sgp6g")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/ball" unique_id=802634968]
-material_override = SubResource("StandardMaterial3D_tefeu")
-mesh = SubResource("SphereMesh_sgp6g")
-
-[node name="SpringArm3D" type="SpringArm3D" parent="Player" unique_id=622782926]
-spring_length = 2.0
-script = ExtResource("1_o5qli")
-
-[node name="Camera3D" type="Camera3D" parent="Player/SpringArm3D" unique_id=1091844823]
+[node name="Player" parent="." unique_id=2002366403 instance=ExtResource("1_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -3.1881127)
 
 [node name="World" type="Node3D" parent="." unique_id=1556958791 node_paths=PackedStringArray("player_controller")]
 script = ExtResource("4_tbgi4")
 player_controller = NodePath("../Player")
 
 [node name="TerrainChunk1" parent="World" unique_id=1727605181 instance=ExtResource("4_jyhfs")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1656738867]
+
+[node name="FpsLabel" type="Label" parent="CanvasLayer" unique_id=502616260]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "dsds"
+script = ExtResource("4_tefeu")

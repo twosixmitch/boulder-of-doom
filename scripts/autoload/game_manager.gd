@@ -3,7 +3,7 @@ extends Node
 var score: int = 0
 
 
-func prop_hit(prop_type: Enums.PropType, world_position: Vector3) -> void:
+func prop_hit(_prop_type: Enums.PropType, world_position: Vector3) -> void:
 	var point_value = 1
 	score += point_value
 	

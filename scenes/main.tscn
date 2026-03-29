@@ -1,56 +1,9 @@
-[gd_scene format=3 uid="uid://wjihatvedc47"]
+[gd_scene format=3 uid="uid://cyauevj2oh8wv"]
 
-[ext_resource type="PackedScene" uid="uid://dpsowi22khrfd" path="res://scenes/player.tscn" id="1_sugp2"]
-[ext_resource type="PackedScene" uid="uid://bacscfikukuxk" path="res://scenes/world/world_chunk_1.tscn" id="4_jyhfs"]
-[ext_resource type="Script" uid="uid://clvd7fd12psc1" path="res://scripts/ui/game_ui.gd" id="4_o6xl0"]
-[ext_resource type="Script" uid="uid://b7tx20w1crvj6" path="res://scripts/world/world_manager.gd" id="4_tbgi4"]
-[ext_resource type="Script" uid="uid://duwh68pwgeean" path="res://scripts/ui/fps_counter.gd" id="4_tefeu"]
-[ext_resource type="PackedScene" uid="uid://cl4kmc81qgki6" path="res://scenes/ui/prop_points.tscn" id="5_tefeu"]
+[ext_resource type="Script" uid="uid://xsk4odwmw1tm" path="res://scripts/main.gd" id="1_o5qli"]
 
-[node name="Main" type="Node3D" unique_id=1766780046]
+[node name="Main" type="Node" unique_id=655549438 node_paths=PackedStringArray("content_parent")]
+script = ExtResource("1_o5qli")
+content_parent = NodePath("Content")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1441180418]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2, 0)
-
-[node name="Player" parent="." unique_id=2002366403 instance=ExtResource("1_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -3.1881127)
-
-[node name="World" type="Node3D" parent="." unique_id=1556958791 node_paths=PackedStringArray("player_controller")]
-script = ExtResource("4_tbgi4")
-player_controller = NodePath("../Player")
-
-[node name="TerrainChunk1" parent="World" unique_id=1727605181 instance=ExtResource("4_jyhfs")]
-
-[node name="GameUI" type="CanvasLayer" parent="." unique_id=1656738867 node_paths=PackedStringArray("score_label", "points_parent") groups=["game_ui"]]
-script = ExtResource("4_o6xl0")
-prop_points_scene = ExtResource("5_tefeu")
-score_label = NodePath("ScoreLabel")
-points_parent = NodePath("OnScreenPoints")
-
-[node name="FpsLabel" type="Label" parent="GameUI" unique_id=502616260]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -104.0
-offset_bottom = 45.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 32
-text = "FPS: 0"
-horizontal_alignment = 2
-script = ExtResource("4_tefeu")
-
-[node name="ScoreLabel" type="Label" parent="GameUI" unique_id=502616261]
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 200.0
-offset_bottom = 56.0
-theme_override_font_sizes/font_size = 40
-text = "SCORE: 0"
-
-[node name="OnScreenPoints" type="Control" parent="GameUI" unique_id=1338243003]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Content" type="Node" parent="." unique_id=76674114]

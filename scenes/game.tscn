@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://wjihatvedc47"]
+
+[ext_resource type="PackedScene" uid="uid://dpsowi22khrfd" path="res://scenes/player.tscn" id="1_sugp2"]
+[ext_resource type="Script" uid="uid://dr44d1u328b0k" path="res://scripts/game/game.gd" id="1_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://bacscfikukuxk" path="res://scenes/world/world_chunk_1.tscn" id="4_jyhfs"]
+[ext_resource type="Script" uid="uid://clvd7fd12psc1" path="res://scripts/game/game_ui/game_ui.gd" id="4_o6xl0"]
+[ext_resource type="Script" uid="uid://b7tx20w1crvj6" path="res://scripts/game/world/world_manager.gd" id="4_tbgi4"]
+[ext_resource type="Script" uid="uid://duwh68pwgeean" path="res://scripts/game/game_ui/fps_counter.gd" id="4_tefeu"]
+[ext_resource type="PackedScene" uid="uid://cl4kmc81qgki6" path="res://scenes/ui/prop_points.tscn" id="5_tefeu"]
+
+[node name="Game" type="Node" unique_id=117303221]
+script = ExtResource("1_u5sy4")
+
+[node name="Main" type="Node3D" parent="." unique_id=1766780046]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Main" unique_id=1441180418]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2, 0)
+
+[node name="World" type="Node3D" parent="Main" unique_id=1556958791 node_paths=PackedStringArray("player_controller")]
+script = ExtResource("4_tbgi4")
+player_controller = NodePath("../Player")
+
+[node name="TerrainChunk1" parent="Main/World" unique_id=1727605181 instance=ExtResource("4_jyhfs")]
+
+[node name="Player" parent="Main" unique_id=2002366403 instance=ExtResource("1_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -3.1881127)
+
+[node name="GameUI" type="CanvasLayer" parent="." unique_id=1656738867 node_paths=PackedStringArray("score_label", "points_parent") groups=["game_ui"]]
+script = ExtResource("4_o6xl0")
+prop_points_scene = ExtResource("5_tefeu")
+score_label = NodePath("Control/VBoxContainer/MarginContainer/Control/ScoreLabel")
+points_parent = NodePath("OnScreenPoints")
+
+[node name="OnScreenPoints" type="Control" parent="GameUI" unique_id=1338243003]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="GameUI" unique_id=1700108522]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/Control" unique_id=49155937]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopNotch" type="VSeparator" parent="GameUI/Control/VBoxContainer" unique_id=351206130]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GameUI/Control/VBoxContainer" unique_id=1867092411]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 20
+
+[node name="Control" type="Control" parent="GameUI/Control/VBoxContainer/MarginContainer" unique_id=481592570]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="GameUI/Control/VBoxContainer/MarginContainer/Control" unique_id=1892109625]
+custom_minimum_size = Vector2(128, 80)
+layout_mode = 1
+offset_right = 128.0
+offset_bottom = 80.0
+text = "BACK"
+
+[node name="ScoreLabel" type="Label" parent="GameUI/Control/VBoxContainer/MarginContainer/Control" unique_id=502616261]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -92.0
+offset_right = 92.0
+offset_bottom = 55.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "SCORE: 0"
+
+[node name="FpsLabel" type="Label" parent="GameUI/Control/VBoxContainer/MarginContainer/Control" unique_id=502616260]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1099.0
+offset_bottom = 45.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 32
+text = "FPS: 0"
+horizontal_alignment = 2
+script = ExtResource("4_tefeu")
+
+[node name="BottomNotch" type="VSeparator" parent="GameUI/Control/VBoxContainer" unique_id=414123618]
+layout_mode = 2
+
+[connection signal="pressed" from="GameUI/Control/VBoxContainer/MarginContainer/Control/BackButton" to="GameUI" method="_on_back_button_pressed"]

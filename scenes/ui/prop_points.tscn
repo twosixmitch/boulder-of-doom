@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cl4kmc81qgki6"]
 
-[ext_resource type="Script" uid="uid://b60mrg4cvbrnh" path="res://scripts/ui/prop_points.gd" id="1_1re77"]
+[ext_resource type="Script" uid="uid://b60mrg4cvbrnh" path="res://scripts/game/game_ui/prop_points.gd" id="1_1re77"]
 
 [node name="FloatingScorePopup" type="Label" unique_id=1348708287]
 anchors_preset = 8

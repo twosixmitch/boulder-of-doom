@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="boulder-of-doom"
-run/main_scene="uid://wjihatvedc47"
+run/main_scene="uid://cyauevj2oh8wv"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 

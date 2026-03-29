@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dpsowi22khrfd"]
 
-[ext_resource type="Script" uid="uid://ds6blali6cxtd" path="res://scripts/player/player_controller.gd" id="1_dqkch"]
-[ext_resource type="Script" uid="uid://cl0myrakc0iji" path="res://scripts/player/ball_controller.gd" id="2_qlg0r"]
+[ext_resource type="Script" uid="uid://ds6blali6cxtd" path="res://scripts/game/player/player_controller.gd" id="1_dqkch"]
+[ext_resource type="Script" uid="uid://cl0myrakc0iji" path="res://scripts/game/player/ball_controller.gd" id="2_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://cw76mcnfadk8i" path="res://textures/prototype/Dark/texture_01.png" id="3_tuyoq"]
-[ext_resource type="Script" uid="uid://q1njm41b3ngf" path="res://scripts/camera/camera_spring_arm.gd" id="4_fjrip"]
+[ext_resource type="Script" uid="uid://q1njm41b3ngf" path="res://scripts/game/camera/camera_spring_arm.gd" id="4_fjrip"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sgp6g"]
 bounce = 0.2

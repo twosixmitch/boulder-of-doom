@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://wiug3jvcqbi"]
 
-[ext_resource type="Script" uid="uid://df0746k8hngk5" path="res://scripts/world/prop_rigid_body.gd" id="2_c2d6m"]
+[ext_resource type="Script" uid="uid://df0746k8hngk5" path="res://scripts/game/world/prop_rigid_body.gd" id="2_c2d6m"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_57k3y"]
 friction = 0.2

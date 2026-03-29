@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cbgcav7pawt80"]
 
 [ext_resource type="Material" uid="uid://bm8m6alb8sopa" path="res://materials/dark_prototype_standard_material_3d.tres" id="1_ljybn"]
-[ext_resource type="Script" uid="uid://cdyb3e527o21c" path="res://scripts/world/world_chunk.gd" id="1_ri42i"]
+[ext_resource type="Script" uid="uid://cdyb3e527o21c" path="res://scripts/game/world/world_chunk.gd" id="1_ri42i"]
 
 [node name="WorldChunk" type="Node3D" unique_id=624162024 node_paths=PackedStringArray("end_connection")]
 script = ExtResource("1_ri42i")

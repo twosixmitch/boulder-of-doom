@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://crhg4jtxbf8sr"]
 
 [ext_resource type="Texture2D" uid="uid://ngk76tayqmlc" path="res://textures/prototype/Red/texture_08.png" id="1_kwvja"]
-[ext_resource type="Script" uid="uid://c54mpw505fwrp" path="res://scripts/world/hazard_object.gd" id="2_k23bh"]
+[ext_resource type="Script" uid="uid://c54mpw505fwrp" path="res://scripts/game/world/hazard_object.gd" id="2_k23bh"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d1jyc"]
 friction = 0.32

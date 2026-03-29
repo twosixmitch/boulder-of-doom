@@ -8,4 +8,4 @@ func _ready():
 
 
 func _on_body_entered(_body: Node3D):
-	print("HAZARD _on_body_entered %s" % self.name)
+	Events.hit_hazard.emit()

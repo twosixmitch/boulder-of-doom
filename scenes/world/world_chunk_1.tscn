@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bacscfikukuxk"]
 
 [ext_resource type="Script" uid="uid://cdyb3e527o21c" path="res://scripts/game/world/world_chunk.gd" id="1_6836m"]
-[ext_resource type="Material" uid="uid://bm8m6alb8sopa" path="res://materials/dark_prototype_standard_material_3d.tres" id="1_y0u7c"]
+[ext_resource type="Material" uid="uid://bm8m6alb8sopa" path="res://assets/materials/dark_prototype_standard_material_3d.tres" id="1_y0u7c"]
 [ext_resource type="PackedScene" uid="uid://wiug3jvcqbi" path="res://scenes/world/props/prop_block.tscn" id="3_kjgim"]
 [ext_resource type="PackedScene" uid="uid://bvtqeweo3eh00" path="res://scenes/world/props/prop_fence.tscn" id="4_d1jyc"]
 [ext_resource type="PackedScene" uid="uid://crhg4jtxbf8sr" path="res://scenes/world/hazards/hazard.tscn" id="4_kjgim"]

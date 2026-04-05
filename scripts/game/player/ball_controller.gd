@@ -4,15 +4,15 @@ extends RigidBody3D
 ## Maps:
 ## - `ui_left`  -> steer left (arrow left / A depending on your input map)
 ## - `ui_right` -> steer right (arrow right / D depending on your input map)
-@export var steer_force: float = 45.0
+@export var steer_force: float = 100.0
 @export var max_lateral_speed: float = 1.2
 @export var lateral_friction: float = 6.0
 
 ## Keep the ball rolling downhill by enforcing a minimum forward speed.
 @export var downhill_dir: Vector3 = Vector3(0, 0, 1)
-@export var min_forward_speed: float = 8.0
+@export var min_forward_speed: float = 10.0
 @export var forward_drive_strength: float = 2.0
-@export var max_forward_force: float = 200.0
+@export var max_forward_force: float = 100.0
 @export var max_downhill_speed: float = 15.0
 
 

@@ -7,10 +7,10 @@ friction = 0.2
 bounce = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nqyom"]
-size = Vector3(3, 0.75, 0.15)
+size = Vector3(1.2, 0.4, 0.05)
 
 [sub_resource type="BoxMesh" id="BoxMesh_boykf"]
-size = Vector3(3, 0.75, 0.15)
+size = Vector3(1.2, 0.4, 0.03)
 
 [node name="Fence" type="RigidBody3D" unique_id=841671413 groups=["props"]]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 0, 0, 0)
@@ -26,9 +26,11 @@ script = ExtResource("1_boykf")
 prop_type = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2061206734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 shape = SubResource("BoxShape3D_nqyom")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1778350736]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 mesh = SubResource("BoxMesh_boykf")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dpsowi22khrfd" path="res://scenes/player.tscn" id="1_sugp2"]
 [ext_resource type="Script" uid="uid://dr44d1u328b0k" path="res://scripts/game/game.gd" id="1_u5sy4"]
-[ext_resource type="PackedScene" uid="uid://bacscfikukuxk" path="res://scenes/world/world_chunk_1.tscn" id="4_jyhfs"]
 [ext_resource type="Script" uid="uid://clvd7fd12psc1" path="res://scripts/game/game_ui/game_ui.gd" id="4_o6xl0"]
 [ext_resource type="Script" uid="uid://b7tx20w1crvj6" path="res://scripts/game/world/world_manager.gd" id="4_tbgi4"]
 [ext_resource type="Script" uid="uid://duwh68pwgeean" path="res://scripts/game/game_ui/fps_counter.gd" id="4_tefeu"]
@@ -42,8 +41,6 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2
 [node name="World" type="Node3D" parent="Main" unique_id=1556958791 node_paths=PackedStringArray("player_controller")]
 script = ExtResource("4_tbgi4")
 player_controller = NodePath("../Player")
-
-[node name="TerrainChunk1" parent="Main/World" unique_id=1727605181 instance=ExtResource("4_jyhfs")]
 
 [node name="Player" parent="Main" unique_id=2002366403 instance=ExtResource("1_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -3.1881127)

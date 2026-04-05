@@ -2,10 +2,16 @@ class_name WorldManager extends Node
 
 @export var player_controller: PlayerController
 
+#@export var terrain_chunk_scenes: Array[PackedScene] = [
+	#preload("res://scenes/world/world_chunk_1.tscn"),
+	#preload("res://scenes/world/world_chunk_2.tscn"),
+	#preload("res://scenes/world/world_chunk_3.tscn"),
+#]
+
 @export var terrain_chunk_scenes: Array[PackedScene] = [
-	preload("res://scenes/world/world_chunk_1.tscn"),
-	preload("res://scenes/world/world_chunk_2.tscn"),
-	preload("res://scenes/world/world_chunk_3.tscn"),
+	preload("res://scenes/world/world_chunk_terraced_1.tscn"),
+	preload("res://scenes/world/world_chunk_terraced_2.tscn"),
+	preload("res://scenes/world/world_chunk_terraced_3.tscn"),
 ]
 
 @export var chunks_ahead_buffer: int = 2

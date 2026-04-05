@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://d6e5rvqen0x8"]
+
+[ext_resource type="Script" uid="uid://cdyb3e527o21c" path="res://scripts/game/world/world_chunk.gd" id="1_bc28r"]
+[ext_resource type="Material" uid="uid://bm8m6alb8sopa" path="res://assets/materials/dark_prototype_standard_material_3d.tres" id="2_b6lxx"]
+
+[node name="WorldChunk1" type="Node3D" unique_id=1727605181 node_paths=PackedStringArray("end_connection")]
+script = ExtResource("1_bc28r")
+end_connection = NodePath("EndConnection")
+
+[node name="EndConnection" type="Node3D" parent="." unique_id=152081666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.412003, 46.83131)
+
+[node name="Terrain" type="CSGCombiner3D" parent="." unique_id=762513538]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+use_collision = true
+collision_layer = 2
+collision_mask = 5
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Terrain" unique_id=429855115]
+transform = Transform3D(1, 0, 0, 0, 1, 1.4901161e-08, 0, -1.4901161e-08, 1, 0, -0.40123427, 9.929253)
+size = Vector3(20, 1, 20)
+material = ExtResource("2_b6lxx")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Terrain" unique_id=570708221]
+transform = Transform3D(1, 0, 0, 0, 1.0000031, 4.917383e-07, 0, -4.917383e-07, 1.0000031, -6.4330444, -1.999999, 25)
+size = Vector3(7.133911, 1, 15)
+material = ExtResource("2_b6lxx")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Terrain" unique_id=110845089]
+transform = Transform3D(1, 0, 0, 0, 1.0000031, 4.7683716e-07, 0, -4.7683716e-07, 1.0000031, 5.9786034, -1.999999, 25)
+size = Vector3(7.9067383, 1, 15)
+material = ExtResource("2_b6lxx")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Terrain" unique_id=231651260]
+transform = Transform3D(1, 0, 0, 0, 1.0000031, 4.917383e-07, 0, -4.917383e-07, 1.0000031, -0.46332645, -3.1445754, 24.798185)
+size = Vector3(7.9067383, 1, 15)
+material = ExtResource("2_b6lxx")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Terrain" unique_id=82635682]
+transform = Transform3D(1, 0, 0, 0, 1, 1.4901161e-08, 0, -1.4901161e-08, 1, 0, -7.8762646, 39.316517)
+size = Vector3(20, 1, 15)
+material = ExtResource("2_b6lxx")

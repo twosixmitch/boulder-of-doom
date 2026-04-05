@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cdsoo12ywjku8"]
+
+[ext_resource type="Script" uid="uid://cdyb3e527o21c" path="res://scripts/game/world/world_chunk.gd" id="1_2icqu"]
+[ext_resource type="Material" uid="uid://bm8m6alb8sopa" path="res://assets/materials/dark_prototype_standard_material_3d.tres" id="2_s2hee"]
+
+[node name="WorldChunk1" type="Node3D" unique_id=1727605181 node_paths=PackedStringArray("end_connection")]
+script = ExtResource("1_2icqu")
+end_connection = NodePath("EndConnection")
+
+[node name="EndConnection" type="Node3D" parent="." unique_id=152081666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15.715537, 82.72164)
+
+[node name="Terrain" type="CSGCombiner3D" parent="." unique_id=762513538]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+use_collision = true
+collision_layer = 2
+collision_mask = 5
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Terrain" unique_id=429855115]
+transform = Transform3D(1, 0, 0, 0, 1, 1.4901161e-08, 0, -1.4901161e-08, 1, 0, -0.40123427, 9.929253)
+size = Vector3(20, 1, 20)
+material = ExtResource("2_s2hee")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Terrain" unique_id=82635682]
+transform = Transform3D(1, 0, 0, 0, 1.0000031, 4.917383e-07, 0, -4.917383e-07, 1.0000031, 0, -15.3332, 48.22638)
+size = Vector3(20, 1, 68.98535)
+material = ExtResource("2_s2hee")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Terrain" unique_id=1998940093]
+transform = Transform3D(1, 0, 0, 0, 1.0000031, 4.917383e-07, 0, -4.917383e-07, 1.0000031, 5.6002884, -11.198215, 79.22554)
+size = Vector3(7.361328, 1, 11.443359)
+material = ExtResource("2_s2hee")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Terrain" unique_id=550917463]
+transform = Transform3D(1, 0, 0, 0, 0.96418965, 0.265257, 0, -0.265257, 0.96418965, 6.3398514, -14.08186, 60.799477)
+size = Vector3(3.9205322, 1, 27.350464)
+material = ExtResource("2_s2hee")

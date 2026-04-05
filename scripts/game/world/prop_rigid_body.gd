@@ -12,6 +12,11 @@ func _ready() -> void:
 	get_tree().create_timer(3.0).timeout.connect(_on_spawn_grace_ended)
 
 
+func _process(_delta):
+	if _activated and gravity_scale != 1:
+		gravity_scale = 1
+
+
 func _on_spawn_grace_ended() -> void:
 	_ready_to_activate = true
 

@@ -4,7 +4,7 @@ extends RigidBody3D
 ## Maps:
 ## - `ui_left`  -> steer left (arrow left / A depending on your input map)
 ## - `ui_right` -> steer right (arrow right / D depending on your input map)
-@export var steer_force: float = 100.0
+@export var steer_force: float = 600.0
 @export var max_lateral_speed: float = 1.2
 @export var lateral_friction: float = 6.0
 

@@ -1,6 +1,6 @@
 class_name WorldManager extends Node
 
-@export var player_controller: PlayerController
+@export var player_controller: Node3D
 
 #@export var terrain_chunk_scenes: Array[PackedScene] = [
 	#preload("res://scenes/world/world_chunk_1.tscn"),
@@ -74,8 +74,10 @@ func _sort_chunks_by_start_z() -> void:
 func _ensure_chunks_ahead(animate_new_chunks: bool = true) -> void:
 	if player_controller == null:
 		return
+		
+	var player_pos := _get_player_position()
 
-	var player_z := player_controller.get_ball_position().z
+	var player_z := player_pos.z
 	var buffer_z := _estimate_forward_buffer_z()
 	var target_frontier_z := player_z + buffer_z
 
@@ -110,7 +112,7 @@ func _cleanup_old_chunks() -> void:
 		return
 
 	var keep_span := _estimate_forward_span() * float(maxi(chunks_behind_keep, 1))
-	var min_keep_z := player_controller.get_ball_position().z - keep_span
+	var min_keep_z := _get_player_position().z - keep_span
 
 	for i in range(_chunks.size() - 1, -1, -1):
 		var chunk := _chunks[i]
@@ -166,3 +168,13 @@ func _animate_chunk_rotate_in(chunk: Node3D) -> void:
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.set_ease(Tween.EASE_OUT)
 	tween.tween_property(chunk, "rotation_degrees:x", 0.0, rotate_in_duration)
+	
+
+func _get_player_position() -> Vector3:
+	var player_pos := Vector3.ZERO
+	if player_controller.has_method("get_player_position"):
+		player_pos = player_controller.get_player_position()
+	else:
+		player_pos = player_controller.global_position
+	return player_pos
+	

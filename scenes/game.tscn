@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://wjihatvedc47"]
 
-[ext_resource type="PackedScene" uid="uid://dpsowi22khrfd" path="res://scenes/player.tscn" id="1_sugp2"]
 [ext_resource type="Script" uid="uid://dr44d1u328b0k" path="res://scripts/game/game.gd" id="1_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://d37sjc0l6kplh" path="res://scenes/player_character.tscn" id="3_gee14"]
+[ext_resource type="Script" uid="uid://y5hfwft47rcc" path="res://scripts/game/camera/view.gd" id="4_gee14"]
 [ext_resource type="Script" uid="uid://clvd7fd12psc1" path="res://scripts/game/game_ui/game_ui.gd" id="4_o6xl0"]
 [ext_resource type="Script" uid="uid://b7tx20w1crvj6" path="res://scripts/game/world/world_manager.gd" id="4_tbgi4"]
 [ext_resource type="Script" uid="uid://duwh68pwgeean" path="res://scripts/game/game_ui/fps_counter.gd" id="4_tefeu"]
@@ -40,10 +41,17 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2
 
 [node name="World" type="Node3D" parent="Main" unique_id=1556958791 node_paths=PackedStringArray("player_controller")]
 script = ExtResource("4_tbgi4")
-player_controller = NodePath("../Player")
+player_controller = NodePath("../Character")
 
-[node name="Player" parent="Main" unique_id=2002366403 instance=ExtResource("1_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -3.1881127)
+[node name="Character" parent="Main" unique_id=1632083696 instance=ExtResource("3_gee14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9569554, 1.7912029)
+
+[node name="View" type="Node3D" parent="Main" unique_id=57564379 node_paths=PackedStringArray("target")]
+script = ExtResource("4_gee14")
+target = NodePath("../Character")
+
+[node name="Camera" type="Camera3D" parent="Main/View" unique_id=543754518]
+transform = Transform3D(-0.9998007, -2.3278424e-10, -0.019965189, -0.002821744, 0.9899621, 0.14130503, 0.01976478, 0.1413332, -0.9897648, 0, 5.033616, -2.8069782)
 
 [node name="GameUI" type="CanvasLayer" parent="." unique_id=1656738867 node_paths=PackedStringArray("score_label", "points_parent") groups=["game_ui"]]
 script = ExtResource("4_o6xl0")

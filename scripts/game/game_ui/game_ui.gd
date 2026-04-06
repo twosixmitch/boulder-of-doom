@@ -21,6 +21,7 @@ func _on_score_changed(new_score: int) -> void:
 
 
 func _display_point(amount: int, world_position: Vector3) -> void:
+	print("_display_point")
 	var points_node := prop_points_scene.instantiate() as PropPoints
 	points_parent.add_child(points_node)
 	points_node.setup(amount, world_position)

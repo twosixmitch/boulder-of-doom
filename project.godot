@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*res://scripts/autoload/game_manager.gd"
 Events="*uid://bi26jmwshkgve"
+GameManager="*res://scripts/autoload/game_manager.gd"
 
 [display]
 

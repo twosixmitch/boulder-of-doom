@@ -23,7 +23,7 @@ contact_monitor = true
 max_contacts_reported = 1
 angular_damp = 4.0
 script = ExtResource("1_boykf")
-prop_type = null
+prop_type = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2061206734]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)

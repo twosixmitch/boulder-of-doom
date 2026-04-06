@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://dpsowi22khrfd" path="res://scenes/player_boulder.tscn" id="3_axik6"]
 [ext_resource type="Material" uid="uid://bm8m6alb8sopa" path="res://assets/materials/dark_prototype_standard_material_3d.tres" id="4_nayum"]
 [ext_resource type="PackedScene" uid="uid://cw3tcrgps38xm" path="res://assets/scenes/mannequin_medium.tscn" id="5_5kb5b"]
+[ext_resource type="PackedScene" uid="uid://8ysbmp866oaa" path="res://scenes/world/props/prop_tree_large.tscn" id="6_nayum"]
+[ext_resource type="PackedScene" uid="uid://bwgxt54l16hla" path="res://scenes/world/props/prop_tree_xlarge.tscn" id="7_f5hfo"]
+[ext_resource type="PackedScene" uid="uid://re0lxd3ugc3w" path="res://scenes/world/props/prop_fence_large.tscn" id="8_s7pnd"]
 
 [node name="Game" type="Node" unique_id=117303221]
 
@@ -34,3 +37,12 @@ material = ExtResource("4_nayum")
 
 [node name="Mannequin_Medium" parent="." unique_id=1538339069 instance=ExtResource("5_5kb5b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0397925, 0, 0)
+
+[node name="Tree" parent="." unique_id=1493192935 instance=ExtResource("6_nayum")]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, -5.123209, 0, 0.13963175)
+
+[node name="Tree2" parent="." unique_id=2009539970 instance=ExtResource("7_f5hfo")]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, -6.844485, 0, -0.04534626)
+
+[node name="Fence" parent="." unique_id=349841492 instance=ExtResource("8_s7pnd")]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, -5, 0, -3)

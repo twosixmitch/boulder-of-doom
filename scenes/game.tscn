@@ -49,9 +49,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9569554, 1.7912029)
 [node name="View" type="Node3D" parent="Main" unique_id=57564379 node_paths=PackedStringArray("target")]
 script = ExtResource("4_gee14")
 target = NodePath("../Character")
+distance_behind_player = 3.0
 
 [node name="Camera" type="Camera3D" parent="Main/View" unique_id=543754518]
-transform = Transform3D(-0.9998007, -2.3278424e-10, -0.019965189, -0.002821744, 0.9899621, 0.14130503, 0.01976478, 0.1413332, -0.9897648, 0, 5.033616, -2.8069782)
+transform = Transform3D(-0.9998007, -2.5552642e-09, -0.019965185, -0.0076361615, 0.9239664, 0.38239753, 0.018447159, 0.38247377, -0.9237822, 0, 6.1147842, -1.886518)
+fov = 90.0
 
 [node name="GameUI" type="CanvasLayer" parent="." unique_id=1656738867 node_paths=PackedStringArray("score_label", "points_parent") groups=["game_ui"]]
 script = ExtResource("4_o6xl0")

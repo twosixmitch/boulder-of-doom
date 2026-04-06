@@ -9,7 +9,7 @@ var _ready_to_activate: bool = false
 func _ready() -> void:
 	sleeping = true
 	gravity_scale = 0
-	get_tree().create_timer(3.0).timeout.connect(_on_spawn_grace_ended)
+	get_tree().create_timer(1.0).timeout.connect(_on_spawn_grace_ended)
 
 
 func _process(_delta):

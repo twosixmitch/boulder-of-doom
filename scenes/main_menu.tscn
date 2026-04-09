@@ -81,6 +81,7 @@ layout_mode = 2
 alignment = 2
 
 [node name="PlayButton" type="Button" parent="Control/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1220639976]
+visible = false
 custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -97,6 +98,105 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_il54y")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_4takm")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_pn685")
 text = "PLAY"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1884500133]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PlayButton1" type="Button" parent="Control/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=677772505]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxFlat_sr2rt")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7fvvs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7fvvs")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_aum10")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sr2rt")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_w87pm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_kusfh")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_23dc1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_il54y")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_4takm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pn685")
+text = "1"
+
+[node name="PlayButton2" type="Button" parent="Control/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1478060747]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxFlat_sr2rt")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7fvvs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7fvvs")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_aum10")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sr2rt")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_w87pm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_kusfh")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_23dc1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_il54y")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_4takm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pn685")
+text = "2"
+
+[node name="PlayButton3" type="Button" parent="Control/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=754701531]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxFlat_sr2rt")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7fvvs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7fvvs")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_aum10")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sr2rt")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_w87pm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_kusfh")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_23dc1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_il54y")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_4takm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pn685")
+text = "3"
+
+[node name="PlayButton4" type="Button" parent="Control/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1961082197]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxFlat_sr2rt")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7fvvs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7fvvs")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_aum10")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sr2rt")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_w87pm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_kusfh")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_23dc1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_il54y")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_4takm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pn685")
+text = "4"
+
+[node name="PlayButton5" type="Button" parent="Control/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1680327479]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxFlat_sr2rt")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7fvvs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7fvvs")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_aum10")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sr2rt")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_w87pm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_kusfh")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_23dc1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_il54y")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_4takm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pn685")
+text = "5"
 
 [node name="BottomNotch" type="VSeparator" parent="Control/VBoxContainer" unique_id=476467676]
 layout_mode = 2
@@ -116,3 +216,8 @@ material_override = SubResource("StandardMaterial3D_tefeu")
 mesh = SubResource("SphereMesh_sgp6g")
 
 [connection signal="pressed" from="Control/VBoxContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PlayButton1" to="." method="_on_play_button_1_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PlayButton2" to="." method="_on_play_button_2_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PlayButton3" to="." method="_on_play_button_3_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PlayButton4" to="." method="_on_play_button_4_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PlayButton5" to="." method="_on_play_button_5_pressed"]

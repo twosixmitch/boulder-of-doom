@@ -7,29 +7,31 @@
 [ext_resource type="Script" uid="uid://clvd7fd12psc1" path="res://scripts/game/game_ui/game_ui.gd" id="5_glh1a"]
 [ext_resource type="PackedScene" uid="uid://cl4kmc81qgki6" path="res://scenes/ui/prop_points.tscn" id="6_dr8oi"]
 [ext_resource type="Script" uid="uid://duwh68pwgeean" path="res://scripts/game/game_ui/fps_counter.gd" id="7_h0x8i"]
-[ext_resource type="Script" uid="uid://j4qh4dracye2" path="res://scripts/game/controls/button_controls.gd" id="8_k563j"]
+[ext_resource type="Script" uid="uid://cdqvq6rwiub5t" path="res://scripts/game/controls/swipe_controls.gd" id="8_so0bb"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u5sy4"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c45dc"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gee14"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b4gt0"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0tnpc"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kmooo"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtaks"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glh1a"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kvpfn"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dr8oi"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dinhu"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h0x8i"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kvuet"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k563j"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_trtic"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5m3wm"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ir15t"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ymr8n"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ca42v"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_io8iw"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rysoc"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rye4h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hv4xm"]
 
 [node name="Game" type="Node" unique_id=117303221]
 script = ExtResource("1_so0bb")
@@ -42,6 +44,7 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2
 [node name="World" type="Node3D" parent="Main" unique_id=1556958791 node_paths=PackedStringArray("player_controller")]
 script = ExtResource("2_c45dc")
 player_controller = NodePath("../Character")
+rotate_in_duration = 6.0
 
 [node name="Character" parent="Main" unique_id=1632083696 instance=ExtResource("3_b4gt0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9569554, 1.7912029)
@@ -56,13 +59,13 @@ zoom_sharpness = 1.0
 transform = Transform3D(-0.9998007, -5.1489963e-09, -0.019965181, -0.0079742, 0.9167746, 0.39932552, 0.018303571, 0.3994051, -0.91659176, 0, 4.7002406, -2.2356148)
 fov = 90.0
 
-[node name="GameUI" type="CanvasLayer" parent="." unique_id=1656738867 node_paths=PackedStringArray("score_label", "points_parent") groups=["game_ui"]]
+[node name="GameUI" type="CanvasLayer" parent="." unique_id=1102245896 node_paths=PackedStringArray("score_label", "points_parent") groups=["game_ui"]]
 script = ExtResource("5_glh1a")
 prop_points_scene = ExtResource("6_dr8oi")
-score_label = NodePath("Control/VBoxContainer/MarginContainer/Control/ScoreLabel")
+score_label = NodePath("Control/VBoxContainer/Control/VBoxContainer/MarginContainer/ScoreLabel")
 points_parent = NodePath("OnScreenPoints")
 
-[node name="OnScreenPoints" type="Control" parent="GameUI" unique_id=1338243003]
+[node name="OnScreenPoints" type="Control" parent="GameUI" unique_id=86715494]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -70,7 +73,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="GameUI" unique_id=1700108522]
+[node name="Control" type="Control" parent="GameUI" unique_id=1916842634]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -78,7 +81,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/Control" unique_id=49155937]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/Control" unique_id=1478112822]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -86,102 +89,76 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopNotch" type="VSeparator" parent="GameUI/Control/VBoxContainer" unique_id=351206130]
+[node name="TopNotch" type="VSeparator" parent="GameUI/Control/VBoxContainer" unique_id=1969410001]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_c45dc")
 
-[node name="MarginContainer" type="MarginContainer" parent="GameUI/Control/VBoxContainer" unique_id=1867092411]
+[node name="Control" type="Control" parent="GameUI/Control/VBoxContainer" unique_id=483829121]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 20
 
-[node name="Control" type="Control" parent="GameUI/Control/VBoxContainer/MarginContainer" unique_id=481592570]
-layout_mode = 2
-
-[node name="BackButton" type="Button" parent="GameUI/Control/VBoxContainer/MarginContainer/Control" unique_id=1892109625]
-custom_minimum_size = Vector2(128, 80)
+[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/Control/VBoxContainer/Control" unique_id=1128875560]
 layout_mode = 1
-offset_right = 128.0
-offset_bottom = 80.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GameUI/Control/VBoxContainer/Control/VBoxContainer" unique_id=1944563370]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
+
+[node name="BackButton" type="Button" parent="GameUI/Control/VBoxContainer/Control/VBoxContainer/MarginContainer" unique_id=1521392792]
+custom_minimum_size = Vector2(128, 80)
+layout_mode = 2
+size_flags_horizontal = 0
 text = "BACK"
 
-[node name="ScoreLabel" type="Label" parent="GameUI/Control/VBoxContainer/MarginContainer/Control" unique_id=502616261]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -92.0
-offset_right = 92.0
-offset_bottom = 55.0
-grow_horizontal = 2
+[node name="ScoreLabel" type="Label" parent="GameUI/Control/VBoxContainer/Control/VBoxContainer/MarginContainer" unique_id=222367114]
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 40
 text = "SCORE: 0"
 
-[node name="FpsLabel" type="Label" parent="GameUI/Control/VBoxContainer/MarginContainer/Control" unique_id=502616260]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1099.0
-offset_bottom = 45.0
-grow_horizontal = 0
+[node name="FpsLabel" type="Label" parent="GameUI/Control/VBoxContainer/Control/VBoxContainer/MarginContainer" unique_id=747495466]
+layout_mode = 2
+size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 32
 text = "FPS: 0"
 horizontal_alignment = 2
 script = ExtResource("7_h0x8i")
 
-[node name="ButtonControls" type="VBoxContainer" parent="GameUI/Control/VBoxContainer/MarginContainer/Control" unique_id=1182552550]
+[node name="Controls" type="Control" parent="GameUI/Control/VBoxContainer/Control/VBoxContainer" unique_id=578925629]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SwipeButton" type="Button" parent="GameUI/Control/VBoxContainer/Control/VBoxContainer/Controls" unique_id=1942855281]
+custom_minimum_size = Vector2(0, 900)
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 0
-script = ExtResource("8_k563j")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GameUI/Control/VBoxContainer/MarginContainer/Control/ButtonControls" unique_id=341580009]
-layout_mode = 2
-
-[node name="LeftButton" type="Button" parent="GameUI/Control/VBoxContainer/MarginContainer/Control/ButtonControls/HBoxContainer" unique_id=1811758280]
-custom_minimum_size = Vector2(0, 900)
-layout_mode = 2
+grow_vertical = 2
 size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxEmpty_u5sy4")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_gee14")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_0tnpc")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_vtaks")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_kvpfn")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_dinhu")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_kvuet")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_trtic")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ir15t")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_ca42v")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_rysoc")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_b4gt0")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_kmooo")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_glh1a")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_dr8oi")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_h0x8i")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_k563j")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5m3wm")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_ymr8n")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_io8iw")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_rye4h")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hv4xm")
+script = ExtResource("8_so0bb")
 
-[node name="RightButton" type="Button" parent="GameUI/Control/VBoxContainer/MarginContainer/Control/ButtonControls/HBoxContainer" unique_id=1521399966]
-custom_minimum_size = Vector2(0, 900)
+[node name="BottomNotch" type="VSeparator" parent="GameUI/Control/VBoxContainer" unique_id=1555006174]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxEmpty_u5sy4")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_gee14")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_0tnpc")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_vtaks")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_kvpfn")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_dinhu")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_kvuet")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_trtic")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ir15t")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_ca42v")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_rysoc")
+mouse_filter = 2
 
-[node name="BottomNotch" type="VSeparator" parent="GameUI/Control/VBoxContainer" unique_id=414123618]
-layout_mode = 2
-
-[connection signal="pressed" from="GameUI/Control/VBoxContainer/MarginContainer/Control/BackButton" to="GameUI" method="_on_back_button_pressed"]
-[connection signal="button_down" from="GameUI/Control/VBoxContainer/MarginContainer/Control/ButtonControls/HBoxContainer/LeftButton" to="GameUI/Control/VBoxContainer/MarginContainer/Control/ButtonControls" method="_on_left_button_button_down"]
-[connection signal="button_up" from="GameUI/Control/VBoxContainer/MarginContainer/Control/ButtonControls/HBoxContainer/LeftButton" to="GameUI/Control/VBoxContainer/MarginContainer/Control/ButtonControls" method="_on_left_button_button_up"]
-[connection signal="button_down" from="GameUI/Control/VBoxContainer/MarginContainer/Control/ButtonControls/HBoxContainer/RightButton" to="GameUI/Control/VBoxContainer/MarginContainer/Control/ButtonControls" method="_on_right_button_button_down"]
-[connection signal="button_up" from="GameUI/Control/VBoxContainer/MarginContainer/Control/ButtonControls/HBoxContainer/RightButton" to="GameUI/Control/VBoxContainer/MarginContainer/Control/ButtonControls" method="_on_right_button_button_up"]
+[connection signal="pressed" from="GameUI/Control/VBoxContainer/Control/VBoxContainer/MarginContainer/BackButton" to="GameUI" method="_on_back_button_pressed"]

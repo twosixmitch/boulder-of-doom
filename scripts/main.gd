@@ -4,6 +4,7 @@ extends Node
 
 func _ready():
 	Events.start_new_game.connect(on_start_new_game)
+	Events.start_new_game_scene.connect(on_start_new_game_scene)
 	Events.exit_game.connect(on_exit_game)
 	
 	go_to_main_menu()
@@ -14,7 +15,10 @@ func go_to_main_menu():
 
 
 func on_start_new_game():
-	change_screen("res://scenes/game.tscn")
+	change_screen("res://scenes/game_1.tscn")
+	
+func on_start_new_game_scene(scene_num: int):
+	change_screen("res://scenes/game_%s.tscn" % scene_num)
 
 
 func on_exit_game():

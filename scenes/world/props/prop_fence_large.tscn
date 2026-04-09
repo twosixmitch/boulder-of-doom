@@ -7,13 +7,13 @@ friction = 0.2
 bounce = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h62ck"]
-size = Vector3(2, 0.6, 0.1)
+size = Vector3(2, 1, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_boykf"]
-size = Vector3(2, 0.1, 0.03)
+size = Vector3(2, 0.2, 0.03)
 
 [sub_resource type="BoxMesh" id="BoxMesh_h62ck"]
-size = Vector3(0.15, 0.6, 0.1)
+size = Vector3(0.15, 1, 0.1)
 
 [node name="Fence" type="RigidBody3D" unique_id=841671413 groups=["props"]]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 0, 0, 0)
@@ -29,23 +29,23 @@ script = ExtResource("1_h62ck")
 prop_type = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2061206734]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012676358, 0.29635012, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013, 0.5, 0)
 shape = SubResource("BoxShape3D_h62ck")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1778350736]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5229644, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7949212, 0)
 mesh = SubResource("BoxMesh_boykf")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=318419111]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22990909, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40380436, 0)
 mesh = SubResource("BoxMesh_boykf")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=965242754]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.917811, 0.2989259, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.88389057, 0.5, 0)
 mesh = SubResource("BoxMesh_h62ck")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1346199409]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.885668, 0.2989259, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.886, 0.5, 0)
 mesh = SubResource("BoxMesh_h62ck")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

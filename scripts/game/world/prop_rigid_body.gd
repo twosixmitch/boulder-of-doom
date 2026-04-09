@@ -45,7 +45,7 @@ func _can_activate_from_body(body) -> bool:
 
 
 func activate(body):
-	print("activate: %s" % self.name)
+	#print("activate: %s" % self.name)
 	_activated = true
 	gravity_scale = 1.0
 	call_deferred("set_contact_monitor", false)

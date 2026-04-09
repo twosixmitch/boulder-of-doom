@@ -39,10 +39,10 @@ material = ExtResource("4_nayum")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0397925, 0, 0)
 
 [node name="Tree" parent="." unique_id=1493192935 instance=ExtResource("6_nayum")]
-transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, -5.123209, 0, 0.13963175)
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, -8.720047, 0, 0.13963175)
 
 [node name="Tree2" parent="." unique_id=2009539970 instance=ExtResource("7_f5hfo")]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, -6.844485, 0, -0.04534626)
 
 [node name="Fence" parent="." unique_id=349841492 instance=ExtResource("8_s7pnd")]
-transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, -5, 0, -3)
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, -5, 0, -0.024772167)

@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://d37sjc0l6kplh"]
+[gd_scene format=3 uid="uid://dduc2rct5m6or"]
 
-[ext_resource type="PackedScene" uid="uid://cw3tcrgps38xm" path="res://assets/scenes/mannequin_medium.tscn" id="1_6r27q"]
-[ext_resource type="Script" uid="uid://b63r3s5yk36lf" path="res://scripts/game/player/player_character_controller.gd" id="1_kww55"]
+[ext_resource type="Script" uid="uid://b63r3s5yk36lf" path="res://scripts/game/player/player_character_controller.gd" id="1_xk3vm"]
+[ext_resource type="PackedScene" uid="uid://cw3tcrgps38xm" path="res://assets/scenes/mannequin_medium.tscn" id="2_nvw78"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_56udc"]
 friction = 5.0
@@ -10,19 +10,20 @@ friction = 5.0
 radius = 1.0
 
 [node name="Character" type="Node3D" unique_id=1632083696 node_paths=PackedStringArray("char_anim_controller")]
-script = ExtResource("1_kww55")
+script = ExtResource("1_xk3vm")
 char_anim_controller = NodePath("Container/Mannequin_Medium")
 
 [node name="Ground" type="RayCast3D" parent="." unique_id=1230170502]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 collision_mask = 2
 hit_back_faces = false
 debug_shape_custom_color = Color(1, 0, 0, 1)
-debug_shape_thickness = 4
 
 [node name="Container" type="Node3D" parent="." unique_id=674834512]
 
-[node name="Mannequin_Medium" parent="Container" unique_id=1538339069 instance=ExtResource("1_6r27q")]
+[node name="Mannequin_Medium" parent="Container" unique_id=1538339069 instance=ExtResource("2_nvw78")]
+
+[node name="Camera3D" type="Camera3D" parent="Container/Mannequin_Medium" unique_id=576294750]
+transform = Transform3D(-1, -4.371139e-08, 7.5710346e-08, 0, 0.8660254, 0.5, -8.742278e-08, 0.5, -0.8660254, 0, 9, -7)
 
 [node name="Sphere" type="RigidBody3D" parent="." unique_id=381116611 groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

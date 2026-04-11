@@ -34,15 +34,17 @@ prop_type = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_nqyom")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=903456031]
+[node name="Visuals" type="Node3D" parent="." unique_id=360413508]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visuals" unique_id=903456031]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 mesh = SubResource("CylinderMesh_cjk3g")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=15748212]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Visuals" unique_id=15748212]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 mesh = SubResource("PrismMesh_raqds")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1691494361]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Visuals" unique_id=1691494361]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8770714, 0)
 mesh = SubResource("PrismMesh_raqds")
 

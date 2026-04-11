@@ -32,19 +32,21 @@ prop_type = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013, 0.5, 0)
 shape = SubResource("BoxShape3D_h62ck")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1778350736]
+[node name="Visuals" type="Node3D" parent="." unique_id=624128834]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visuals" unique_id=1778350736]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7949212, 0)
 mesh = SubResource("BoxMesh_boykf")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=318419111]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Visuals" unique_id=318419111]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40380436, 0)
 mesh = SubResource("BoxMesh_boykf")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=965242754]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Visuals" unique_id=965242754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.88389057, 0.5, 0)
 mesh = SubResource("BoxMesh_h62ck")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1346199409]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Visuals" unique_id=1346199409]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.886, 0.5, 0)
 mesh = SubResource("BoxMesh_h62ck")
 

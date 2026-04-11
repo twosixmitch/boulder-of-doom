@@ -7,22 +7,23 @@ func _ready():
 	Events.start_new_game_scene.connect(on_start_new_game_scene)
 	Events.exit_game.connect(on_exit_game)
 	
-	go_to_main_menu()
+	go_to_home_screen()
 
 
-func go_to_main_menu():
-	change_screen("res://scenes/main_menu.tscn")
+func go_to_home_screen():
+	change_screen("res://scenes/home_screen.tscn")
 
 
 func on_start_new_game():
-	change_screen("res://scenes/game_1.tscn")
-	
+	change_screen("res://scenes/game.tscn")
+
+
 func on_start_new_game_scene(scene_num: int):
 	change_screen("res://scenes/game_%s.tscn" % scene_num)
 
 
 func on_exit_game():
-	go_to_main_menu()
+	go_to_home_screen()
 
 
 func change_screen(path: String):

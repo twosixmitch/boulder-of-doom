@@ -52,6 +52,7 @@ forward={
 3d_physics/layer_3="Props"
 3d_physics/layer_4="Hazard"
 3d_physics/layer_5="Trigger"
+3d_physics/layer_9="Inactive Props"
 
 [physics]
 

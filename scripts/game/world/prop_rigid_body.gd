@@ -1,6 +1,16 @@
 class_name PropRigidBody extends RigidBody3D
 
+## Seconds after activation before the prop moves to Inactive Props layer (see project 3D physics layers).
+const COLLISION_WORLD_ONLY_DELAY_SEC := 1.0
+## Layer 9 "Inactive Props" — prop is on this layer so Player / active Props ignore it.
+const COLLISION_LAYER_INACTIVE_PROPS := 1 << (9 - 1)
+## Collide only with layer 2 "World".
+const COLLISION_MASK_WORLD_ONLY := 1 << (2 - 1)
+
 @export var prop_type: Enums.PropType
+@export var vanish_duration: float = 0.5
+## Child Node3D that holds meshes (scaled to zero when the prop vanishes).
+@export var visuals_path: NodePath = ^"Visuals"
 
 var _activated: bool = false
 var _ready_to_activate: bool = false
@@ -59,3 +69,29 @@ func activate(body):
 	apply_impulse(direction * 0.80)
 	
 	GameManager.prop_hit(prop_type, global_position)
+
+	get_tree().create_timer(COLLISION_WORLD_ONLY_DELAY_SEC).timeout.connect(
+		_on_inactive_prop_collision_timer
+	)
+
+
+func _on_inactive_prop_collision_timer() -> void:
+	if not is_instance_valid(self) or not is_inside_tree():
+		return
+	collision_layer = COLLISION_LAYER_INACTIVE_PROPS
+	collision_mask = COLLISION_MASK_WORLD_ONLY
+	_start_visuals_vanish()
+
+
+func _start_visuals_vanish() -> void:
+	var visuals := get_node_or_null(visuals_path) as Node3D
+	if visuals == null:
+		push_warning("PropRigidBody '%s': no Node3D at visuals_path %s; freeing." % [name, visuals_path])
+		queue_free()
+		return
+
+	var tween := create_tween()
+	tween.tween_property(visuals, "scale", Vector3.ZERO, vanish_duration).set_ease(
+		Tween.EASE_IN
+	).set_trans(Tween.TRANS_QUAD)
+	tween.tween_callback(queue_free)

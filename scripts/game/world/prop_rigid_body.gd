@@ -1,14 +1,14 @@
 class_name PropRigidBody extends RigidBody3D
 
 ## Seconds after activation before the prop moves to Inactive Props layer (see project 3D physics layers).
-const COLLISION_WORLD_ONLY_DELAY_SEC := 1.0
+const COLLISION_WORLD_ONLY_DELAY_SEC := 0.8
 ## Layer 9 "Inactive Props" — prop is on this layer so Player / active Props ignore it.
 const COLLISION_LAYER_INACTIVE_PROPS := 1 << (9 - 1)
 ## Collide only with layer 2 "World".
 const COLLISION_MASK_WORLD_ONLY := 1 << (2 - 1)
 
 @export var prop_type: Enums.PropType
-@export var vanish_duration: float = 0.5
+@export var vanish_duration: float = 0.4
 ## Child Node3D that holds meshes (scaled to zero when the prop vanishes).
 @export var visuals_path: NodePath = ^"Visuals"
 
@@ -65,10 +65,10 @@ func activate(body):
 	var direction = body.global_position - global_position
 	direction.y = 0
 	direction = -direction.normalized()
-	direction.y = 1.0
-	apply_impulse(direction * 0.80)
+	direction.y = 1.2
+	apply_impulse(direction * 0.8)
 	
-	GameManager.prop_hit(prop_type, global_position)
+	Events.hit_prop.emit(prop_type, global_position)
 
 	get_tree().create_timer(COLLISION_WORLD_ONLY_DELAY_SEC).timeout.connect(
 		_on_inactive_prop_collision_timer

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cw3tcrgps38xm" path="res://assets/scenes/mannequin_medium.tscn" id="5_5kb5b"]
 [ext_resource type="PackedScene" uid="uid://8ysbmp866oaa" path="res://scenes/world/props/prop_tree_large.tscn" id="6_nayum"]
 [ext_resource type="PackedScene" uid="uid://bwgxt54l16hla" path="res://scenes/world/props/prop_tree_xlarge.tscn" id="7_f5hfo"]
+[ext_resource type="PackedScene" uid="uid://qoo58nmojjel" path="res://scenes/world/hazards/hazard_wall.tscn" id="7_hkrsu"]
 [ext_resource type="PackedScene" uid="uid://re0lxd3ugc3w" path="res://scenes/world/props/prop_fence_large.tscn" id="8_s7pnd"]
 
 [node name="Game" type="Node" unique_id=117303221]
@@ -38,3 +39,6 @@ transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, -7.060488, 0, -0.0453
 
 [node name="Fence" parent="." unique_id=349841492 instance=ExtResource("8_s7pnd")]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, -5, 0, -0.024772167)
+
+[node name="Hazard" parent="." unique_id=2005644604 instance=ExtResource("7_hkrsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2681355, 0, 0.12116623)

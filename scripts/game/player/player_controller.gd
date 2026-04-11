@@ -45,6 +45,8 @@ var _speed_ramp_elapsed: float = 0.0
 var _touch_steer_axis: float = 0.0
 var _default_gravity: float = 9.8
 var _was_grounded: bool = false
+## When false (e.g. after hitting a hazard), forward drive, steering, and lateral limits stop applying.
+var _player_controls_active: bool = true
 
 # Public Functions
 
@@ -137,6 +139,9 @@ func _effective_forward_speed() -> float:
 
 
 func _apply_downhill_drive(downhill: Vector3) -> void:
+	if not _player_controls_active:
+		return
+
 	var target_speed := _effective_forward_speed()
 	if target_speed <= 0.0:
 		return
@@ -154,6 +159,9 @@ func _apply_downhill_drive(downhill: Vector3) -> void:
 
 
 func _clamp_lateral_speed() -> void:
+	if not _player_controls_active:
+		return
+
 	if abs(sphere.linear_velocity.x) <= max_lateral_speed:
 		return
 
@@ -163,6 +171,9 @@ func _clamp_lateral_speed() -> void:
 
 
 func _clamp_downhill_speed(downhill: Vector3) -> void:
+	if not _player_controls_active:
+		return
+
 	var cap := _effective_forward_speed()
 	if cap <= 0.0:
 		return
@@ -175,11 +186,16 @@ func _clamp_downhill_speed(downhill: Vector3) -> void:
 
 
 func _steer_axis() -> float:
+	if not _player_controls_active:
+		return 0.0
 	var keyboard_axis := -Input.get_axis("ui_left", "ui_right")
 	return _touch_steer_axis if absf(_touch_steer_axis) > 0.001 else keyboard_axis
 
 
 func _apply_lateral_control(delta: float) -> void:
+	if not _player_controls_active:
+		return
+
 	var steer_axis := _steer_axis()
 
 	if abs(steer_axis) > 0.001:
@@ -244,12 +260,6 @@ func _orient_visual_to_run_direction(delta: float, downhill: Vector3, steer_axis
 	visual_model.global_transform = Transform3D(Basis(q_smooth).scaled(preserved_scale), pos)
 
 
-func _on_sphere_body_entered(_body: Node) -> void:
-	print("_on_sphere_body_entered")
-	if visual_model == null:
-		return
-
-
 func _on_player_steer_changed(axis: float) -> void:
 	set_touch_steer_axis(axis)
 
@@ -262,3 +272,8 @@ func _on_player_jump_requested() -> void:
 	
 	if meets_conditions:
 		sphere.apply_central_impulse(Vector3.UP * jump_impulse * sphere.mass)
+
+
+func on_hit_hazard() -> void:
+	_player_controls_active = false
+	sphere.apply_central_impulse(Vector3(0.0, 0.3, -1.0) * 3 * sphere.mass)

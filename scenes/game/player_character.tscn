@@ -23,6 +23,7 @@ debug_shape_thickness = 4
 [node name="Container" type="Node3D" parent="." unique_id=674834512]
 
 [node name="Mannequin_Medium" parent="Container" unique_id=1538339069 instance=ExtResource("1_6r27q")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
 
 [node name="Sphere" type="RigidBody3D" parent="." unique_id=381116611 groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

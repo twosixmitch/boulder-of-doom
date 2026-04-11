@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bwgxt54l16hla" path="res://scenes/world/props/prop_tree_xlarge.tscn" id="5_klww3"]
 [ext_resource type="PackedScene" uid="uid://re0lxd3ugc3w" path="res://scenes/world/props/prop_fence_large.tscn" id="6_3usxo"]
 [ext_resource type="PackedScene" uid="uid://8ysbmp866oaa" path="res://scenes/world/props/prop_tree_large.tscn" id="7_nq3yb"]
+[ext_resource type="PackedScene" uid="uid://qoo58nmojjel" path="res://scenes/world/hazards/hazard_wall.tscn" id="8_3usxo"]
 
 [node name="WorldChunk1" type="Node3D" unique_id=1727605181 node_paths=PackedStringArray("end_connection")]
 script = ExtResource("1_bc28r")
@@ -301,3 +302,9 @@ transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 9.848768, -7.376259, 
 
 [node name="Tree13" parent="." unique_id=899857673 instance=ExtResource("7_nq3yb")]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 7.794281, -7.376259, 43.175156)
+
+[node name="Hazard" parent="." unique_id=2115359037 instance=ExtResource("8_3usxo")]
+transform = Transform3D(0.9829386, 0, 0.18393418, 0, 1, 0, -0.18393418, 0, 0.9829386, 5.558449, 0.09876263, 15.245136)
+
+[node name="Hazard2" parent="." unique_id=1017322989 instance=ExtResource("8_3usxo")]
+transform = Transform3D(0.9064921, 0, -0.42222276, 0, 1, 0, 0.42222276, 0, 0.9064921, -6.912483, 0.09876263, 16.677622)

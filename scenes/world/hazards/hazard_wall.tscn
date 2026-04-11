@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://qoo58nmojjel"]
+
+[ext_resource type="Script" uid="uid://d0f1jnvr3hcoo" path="res://scripts/game/world/hazard_rigid_body.gd" id="1_l1716"]
+[ext_resource type="Material" uid="uid://buvs1qvhc1sgv" path="res://assets/materials/red_prototype_standard_material_3d.tres" id="3_jy4o6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sgfsd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jy4o6"]
+size = Vector3(3, 1.5, 0.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e1iix"]
+material = ExtResource("3_jy4o6")
+size = Vector3(3, 1.5, 0.6)
+
+[node name="Hazard" type="RigidBody3D" unique_id=2115359037 groups=["hazards"]]
+collision_layer = 8
+collision_mask = 3
+mass = 30.0
+physics_material_override = SubResource("PhysicsMaterial_sgfsd")
+sleeping = true
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_l1716")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2061206734]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("BoxShape3D_jy4o6")
+
+[node name="Visuals" type="Node3D" parent="CollisionShape3D" unique_id=606590911]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CollisionShape3D/Visuals" unique_id=15748212]
+mesh = SubResource("BoxMesh_e1iix")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

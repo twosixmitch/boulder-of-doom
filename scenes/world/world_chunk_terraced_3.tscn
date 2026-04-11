@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bwgxt54l16hla" path="res://scenes/world/props/prop_tree_xlarge.tscn" id="3_8eggw"]
 [ext_resource type="PackedScene" uid="uid://8ysbmp866oaa" path="res://scenes/world/props/prop_tree_large.tscn" id="4_0jngx"]
 [ext_resource type="PackedScene" uid="uid://re0lxd3ugc3w" path="res://scenes/world/props/prop_fence_large.tscn" id="6_0jngx"]
+[ext_resource type="PackedScene" uid="uid://qoo58nmojjel" path="res://scenes/world/hazards/hazard_wall.tscn" id="7_psfks"]
 
 [node name="WorldChunk1" type="Node3D" unique_id=1727605181 node_paths=PackedStringArray("end_connection")]
 script = ExtResource("1_2icqu")
@@ -286,9 +287,9 @@ size = Vector3(8.5434265, 7.25, 19.463562)
 material = ExtResource("2_b8stj")
 
 [node name="CSGBox3D22" type="CSGBox3D" parent="." unique_id=855986027]
-transform = Transform3D(-0.995727, -0.07362761, 0.05574485, -0.076161, 0.9960651, -0.044784687, -0.05223009, -0.04883896, -0.9974164, -24.856829, -7.714549, 44.09819)
+transform = Transform3D(-0.995727, -0.07362761, 0.05574485, -0.076161, 0.9960651, -0.044784687, -0.05223009, -0.04883896, -0.9974164, -24.503942, -7.998054, 37.78415)
 cast_shadow = 0
-size = Vector3(8.5434265, 7.25, 19.463562)
+size = Vector3(8.5434265, 7.25, 32.12436)
 material = ExtResource("2_b8stj")
 
 [node name="CSGBox3D23" type="CSGBox3D" parent="." unique_id=558211439]
@@ -361,12 +362,6 @@ material = ExtResource("2_b8stj")
 transform = Transform3D(-0.995727, -0.073627606, 0.05574485, -0.07616099, 0.996065, -0.044784687, -0.052230086, -0.04883896, -0.9974163, -29.356867, 2.5167484, 68.00844)
 cast_shadow = 0
 size = Vector3(8.5434265, 7.25, 19.463562)
-material = ExtResource("2_b8stj")
-
-[node name="CSGBox3D36" type="CSGBox3D" parent="." unique_id=472851725]
-transform = Transform3D(-0.995727, -0.07362758, 0.055744845, -0.076160975, 0.99606496, -0.044784687, -0.052230086, -0.048838966, -0.99741626, -28.862638, 4.7944527, 74.83861)
-cast_shadow = 0
-size = Vector3(8.5434265, 7.25, 19.03012)
 material = ExtResource("2_b8stj")
 
 [node name="CSGBox3D39" type="CSGBox3D" parent="." unique_id=257025544]
@@ -483,20 +478,14 @@ cast_shadow = 0
 size = Vector3(8.5434265, 7.25, 11.765961)
 material = ExtResource("2_b8stj")
 
-[node name="CSGBox3D61" type="CSGBox3D" parent="." unique_id=375396561]
-transform = Transform3D(0.9961932, 0.012525529, -0.08627202, -0.016884744, 0.9985819, -0.050009407, 0.08552687, 0.051275834, 0.9949918, 20.263172, 8.446369, 78.52373)
-cast_shadow = 0
-size = Vector3(8.5434265, 7.25, 15.703583)
-material = ExtResource("2_b8stj")
-
 [node name="CSGBox3D62" type="CSGBox3D" parent="." unique_id=492094282]
-transform = Transform3D(0.9961932, 0.0125255585, -0.08627202, -0.01688473, 0.9985818, -0.0500094, 0.08552686, 0.051275842, 0.9949918, 20.958263, 8.403477, 69.9199)
+transform = Transform3D(0.9961932, 0.0125255585, -0.08627202, -0.01688473, 0.9985818, -0.0500094, 0.08552686, 0.051275842, 0.9949918, 20.958263, 5.4989853, 61.56006)
 cast_shadow = 0
 size = Vector3(8.5434265, 7.25, 19.463562)
 material = ExtResource("2_b8stj")
 
 [node name="CSGBox3D63" type="CSGBox3D" parent="." unique_id=90867680]
-transform = Transform3D(0.9961932, 0.0125255585, -0.086272016, -0.016884714, 0.99858177, -0.050009396, 0.08552686, 0.051275834, 0.9949917, 21.957327, 8.463058, 45.130615)
+transform = Transform3D(0.9961932, 0.0125255585, -0.086272016, -0.016884714, 0.99858177, -0.050009396, 0.08552686, 0.051275834, 0.9949917, 21.957327, 6.9493237, 41.00775)
 cast_shadow = 0
 size = Vector3(8.5434265, 7.25, 19.463562)
 material = ExtResource("2_b8stj")
@@ -512,3 +501,15 @@ transform = Transform3D(0.9971057, 0.022032013, -0.072770186, -0.024964534, 0.99
 cast_shadow = 0
 size = Vector3(8.5434265, 7.25, 11.22641)
 material = ExtResource("2_b8stj")
+
+[node name="Hazard" parent="." unique_id=2115359037 instance=ExtResource("7_psfks")]
+transform = Transform3D(0.98496497, 0, 0.17275432, 0, 1, 0, -0.17275432, 0, 0.98496497, 14.963619, -15.960934, 44.4956)
+
+[node name="Hazard2" parent="." unique_id=1520530588 instance=ExtResource("7_psfks")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.614482, -15.960934, 44.787315)
+
+[node name="Hazard3" parent="." unique_id=1073000716 instance=ExtResource("7_psfks")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3223863, -15.960907, 79.56171)
+
+[node name="Hazard4" parent="." unique_id=198945202 instance=ExtResource("7_psfks")]
+transform = Transform3D(0.9621942, 0, -0.2723642, 0, 1, 0, 0.2723642, 0, 0.9621942, -3.3007565, -15.960903, 79.64748)

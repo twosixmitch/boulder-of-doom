@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://b64lgdu13yhmh"]
 
 [ext_resource type="Script" uid="uid://dt3e7huqgfiht" path="res://scripts/screens/home_screen.gd" id="1_ujmiq"]
+[ext_resource type="FontFile" uid="uid://dguyqkkf5cegy" path="res://fonts/Poppins-Medium.ttf" id="2_bie51"]
 [ext_resource type="Texture2D" uid="uid://cw76mcnfadk8i" path="res://assets/textures/prototype/Dark/texture_01.png" id="2_ekxnf"]
+[ext_resource type="FontFile" uid="uid://cjt3fko3sqc5d" path="res://fonts/Poppins-Bold.ttf" id="3_ih2x6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sr2rt"]
 bg_color = Color(0.41457415, 0.3224528, 0.5395441, 1)
@@ -46,8 +48,9 @@ albedo_texture = ExtResource("2_ekxnf")
 
 [sub_resource type="SphereMesh" id="SphereMesh_sgp6g"]
 
-[node name="Node" type="Node" unique_id=548747285]
+[node name="Node" type="Node" unique_id=548747285 node_paths=PackedStringArray("highscore_label")]
 script = ExtResource("1_ujmiq")
+highscore_label = NodePath("Control/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/HighscoreValue")
 
 [node name="Control" type="Control" parent="." unique_id=1504039224]
 layout_mode = 3
@@ -79,6 +82,25 @@ theme_override_constants/margin_bottom = 80
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/MarginContainer" unique_id=749919349]
 layout_mode = 2
 alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/MarginContainer/VBoxContainer" unique_id=329119506]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="HighscoreLabel" type="Label" parent="Control/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1281963356]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bie51")
+theme_override_font_sizes/font_size = 64
+text = "HIGHSCORE"
+horizontal_alignment = 1
+
+[node name="HighscoreValue" type="Label" parent="Control/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1006376797]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ih2x6")
+theme_override_font_sizes/font_size = 100
+text = "0"
+horizontal_alignment = 1
 
 [node name="PlayButton" type="Button" parent="Control/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1220639976]
 custom_minimum_size = Vector2(0, 256)

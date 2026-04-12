@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Events="*uid://bi26jmwshkgve"
+GameStateService="*uid://wubb3t5gy8er"
 
 [display]
 

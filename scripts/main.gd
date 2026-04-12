@@ -7,6 +7,8 @@ func _ready():
 	Events.start_new_game_scene.connect(on_start_new_game_scene)
 	Events.exit_game.connect(on_exit_game)
 	
+	GameStateService.load_data()
+	
 	go_to_home_screen()
 
 
@@ -27,9 +29,14 @@ func on_exit_game():
 
 
 func change_screen(path: String):
-	var node = ResourceLoader.load(path).instantiate()
+	var screen_node = ResourceLoader.load(path).instantiate() as ScreenNode
 
 	for child in content_parent.get_children():
 		child.queue_free()
 	
-	content_parent.add_child(node)
+	content_parent.add_child(screen_node)
+	
+	# Allow the system to resize content so calling `.size` returns valid data.
+	await get_tree().process_frame
+	
+	screen_node.on_screen_enter()

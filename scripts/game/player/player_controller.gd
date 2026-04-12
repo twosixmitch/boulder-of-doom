@@ -12,10 +12,10 @@ const LATERAL_FRICTION := 6.0
 
 const COURSE_FORWARD := Vector3(0, 0, 1)
 const STARTING_SPEED := 10.0
-const MAX_SPEED := 12.0
+const MAX_SPEED := 20.0
 
 ## Seconds of play time to ramp from `STARTING_SPEED` to `MAX_SPEED`.
-const SPEED_RAMP_DURATION := 60.0
+const SPEED_RAMP_DURATION := 90.0
 const FORWARD_DRIVE_STRENGTH := 2.0
 const MAX_FORWARD_FORCE := 100.0
 const JUMP_IMPULSE := 10.0

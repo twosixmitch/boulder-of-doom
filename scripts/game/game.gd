@@ -16,8 +16,8 @@ func _exit_tree():
 	Events.hit_hazard.disconnect(on_hit_hazard)
 
 
-func on_hit_hazard():
-	player_controller.on_hit_hazard()
+func on_hit_hazard(world_position: Vector3):
+	player_controller.on_hit_hazard(world_position)
 	print("on_hit_hazard")
 
 

@@ -31,4 +31,4 @@ func _can_activate_from_body(body) -> bool:
 func activate():
 	_activated = true
 	gravity_scale = 1
-	Events.hit_hazard.emit()
+	Events.hit_hazard.emit(global_position)

@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://cgsqprotc4hpp"]
 
-[ext_resource type="Texture2D" uid="uid://c4fpfj8gm7xkb" path="res://assets/textures/mannequin_texture.png" id="1_n6h1l"]
+[ext_resource type="Texture2D" uid="uid://umrw8v6cdkxn" path="res://assets/characters/Mannequin_Medium_mannequin_texture.png" id="1_n6h1l"]
 
 [resource]
 resource_name = "Character_Material"

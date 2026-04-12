@@ -7,7 +7,7 @@ class_name PlayerController extends Node3D
 @onready var visual_model = $Visuals
 
 const STEER_FORCE := 600.0
-const MAX_LATERAL_SPEED := 1.2
+const MAX_LATERAL_SPEED := 1.4
 const LATERAL_FRICTION := 6.0
 
 const COURSE_FORWARD := Vector3(0, 0, 1)

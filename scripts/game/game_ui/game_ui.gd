@@ -5,9 +5,15 @@ class_name GameUI extends Node
 @export var score_label: Label
 @export var points_parent: Control
 
+@export var coins_label: Label
+
 
 func update_score(new_score: int) -> void:
-	score_label.text = "%s" % new_score
+	score_label.text = "%d" % new_score
+
+
+func update_coins(new_coins: int) -> void:
+	coins_label.text = "+%d" % new_coins
 
 
 func display_point(amount: int, world_position: Vector3) -> void:

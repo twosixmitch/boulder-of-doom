@@ -24,7 +24,7 @@ func _process(_delta):
 		gravity_scale = 1
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if linear_velocity.length_squared() > 2 and not _activated:
 		activate_no_body()
 

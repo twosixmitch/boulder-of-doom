@@ -43,7 +43,7 @@ func load_data() -> void:
 		print("[GameStateService] Load File Access Error: %s" % error)
 		return
 	
-	var json_string = file.get_line()
+	var json_string = file.get_as_text()
 	var json = JSON.new()
 
 	var parse_result = json.parse(json_string)
@@ -69,4 +69,4 @@ func save_data() -> void:
 		return
 
 	var json_data = JSON.stringify(game_state.to_json())
-	file.store_line(json_data)
+	file.store_string(json_data)

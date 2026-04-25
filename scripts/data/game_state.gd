@@ -12,8 +12,8 @@ func to_json() -> Dictionary:
 
 
 func from_dictionary(json_data: Dictionary) -> void:
-	if json_data.get("highscore") is int:
-		current_highscore = json_data["highscore"]
+	if json_data.get("highscore"):
+		current_highscore = json_data["highscore"] as int
 	run_history.clear()
 	if json_data.get("run_history") is Array:
 		for entry in json_data["run_history"]:

@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Events="*uid://bi26jmwshkgve"
 GameStateService="*uid://wubb3t5gy8er"
 GameConfig="*res://scripts/autoload/game_config.gd"
+WalletService="*res://scripts/autoload/wallet_service.gd"
 
 [display]
 

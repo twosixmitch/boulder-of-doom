@@ -8,6 +8,7 @@ var game_over: bool = false
 var _game_over_timer: SceneTreeTimer
 
 var _props_hit: int = 0
+var _coins_hit: int = 0
 
 
 func _enter_tree():
@@ -37,7 +38,7 @@ func on_hit_hazard(world_position: Vector3):
 	var run := RunRecord.new()
 	run.score = current_score
 	run.props_hit = _props_hit
-	run.distance = player_controller.get_player_position().z
+	run.distance = roundi(player_controller.get_player_position().z)
 	GameStateService.add_run(run)
 
 	var current_highscore = GameStateService.get_highscore()
@@ -45,6 +46,9 @@ func on_hit_hazard(world_position: Vector3):
 		GameStateService.set_highscore(current_score)
 
 	GameStateService.save_data()
+	
+	WalletService.add_coins(_coins_hit)
+	WalletService.save_data()
 
 	_game_over_timer = get_tree().create_timer(GameConfig.game_over_delay_sec)
 	_game_over_timer.timeout.connect(func() -> void:
@@ -65,4 +69,5 @@ func on_hit_prop(_prop_type: Enums.PropType, world_position: Vector3):
 
 
 func on_hit_coin(_world_position: Vector3):
-	pass
+	_coins_hit += 1
+	game_ui.update_coins(_coins_hit)

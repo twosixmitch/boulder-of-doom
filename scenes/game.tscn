@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cl4kmc81qgki6" path="res://scenes/game/ui/prop_points.tscn" id="6_gee14"]
 [ext_resource type="FontFile" uid="uid://co3q40yj1rl36" path="res://fonts/Bangers-Regular.ttf" id="7_0tnpc"]
 [ext_resource type="Script" uid="uid://cdqvq6rwiub5t" path="res://scripts/game/controls/swipe_controls.gd" id="9_luixn"]
+[ext_resource type="Texture2D" uid="uid://dfueh7ceyt1jp" path="res://images/icon_coin.png" id="9_vtaks"]
 
 [sub_resource type="Environment" id="Environment_gee14"]
 fog_enabled = true
@@ -19,6 +20,10 @@ fog_depth_begin = 200.0
 fog_depth_end = 250.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lyscb"]
+
+[sub_resource type="FontVariation" id="FontVariation_0tnpc"]
+base_font = ExtResource("7_0tnpc")
+spacing_glyph = 2
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u5sy4"]
 
@@ -41,6 +46,8 @@ fog_depth_end = 250.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ca42v"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rysoc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ssvqc"]
 
 [node name="Game" type="Node" unique_id=117303221 node_paths=PackedStringArray("game_ui", "player_controller")]
 script = ExtResource("1_u5sy4")
@@ -70,11 +77,28 @@ target = NodePath("../Character")
 transform = Transform3D(-1, 3.2749146e-08, -8.105699e-08, 0, 0.92718387, 0.37460658, 8.742278e-08, 0.37460658, -0.92718387, 0, 6.1147842, -1.886518)
 fov = 90.0
 
-[node name="GameUI" type="CanvasLayer" parent="." unique_id=1656738867 node_paths=PackedStringArray("score_label", "points_parent") groups=["game_ui"]]
+[node name="GameUI" type="CanvasLayer" parent="." unique_id=1656738867 node_paths=PackedStringArray("score_label", "points_parent", "coins_label") groups=["game_ui"]]
 script = ExtResource("4_o6xl0")
 prop_points_scene = ExtResource("6_gee14")
-score_label = NodePath("Control/VBoxContainer/Control/VBoxContainer/MarginContainer/VBoxContainer/PointsLabel")
+score_label = NodePath("GameState/MarginContainer/VBoxContainer2/VBoxContainer/ScoreContainer/PointsLabel")
 points_parent = NodePath("OnScreenPoints")
+coins_label = NodePath("GameState/MarginContainer/VBoxContainer2/VBoxContainer/CoinsContainer/CoinsLabel")
+
+[node name="FpsLabel" type="Label" parent="GameUI" unique_id=502616260]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.0
+offset_top = 150.0
+offset_right = 45.0
+offset_bottom = 195.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "FPS: 0"
+horizontal_alignment = 2
+script = ExtResource("4_tefeu")
 
 [node name="OnScreenPoints" type="Control" parent="GameUI" unique_id=1338243003]
 layout_mode = 3
@@ -85,7 +109,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Control" type="Control" parent="GameUI" unique_id=1700108522]
+[node name="GameState" type="Control" parent="GameUI" unique_id=1700108522]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,26 +118,66 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/Control" unique_id=49155937]
+[node name="MarginContainer" type="MarginContainer" parent="GameUI/GameState" unique_id=2010215646]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_bottom = 252.0
 grow_horizontal = 2
-grow_vertical = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
 
-[node name="TopNotch" type="VSeparator" parent="GameUI/Control/VBoxContainer" unique_id=351206130]
+[node name="VBoxContainer2" type="VBoxContainer" parent="GameUI/GameState/MarginContainer" unique_id=49155937]
+layout_mode = 2
+
+[node name="TopNotch" type="VSeparator" parent="GameUI/GameState/MarginContainer/VBoxContainer2" unique_id=351206130]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_lyscb")
 
-[node name="Control" type="Control" parent="GameUI/Control/VBoxContainer" unique_id=481592570]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/GameState/MarginContainer/VBoxContainer2" unique_id=1543996934]
 layout_mode = 2
-size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 48
 
-[node name="PlayerControls" type="Control" parent="GameUI/Control/VBoxContainer/Control" unique_id=1539763681]
-layout_mode = 1
+[node name="ScoreContainer" type="HBoxContainer" parent="GameUI/GameState/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1178828345]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="ScoreLabel" type="Label" parent="GameUI/GameState/MarginContainer/VBoxContainer2/VBoxContainer/ScoreContainer" unique_id=502616261]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("FontVariation_0tnpc")
+theme_override_font_sizes/font_size = 54
+text = "SCORE"
+
+[node name="PointsLabel" type="Label" parent="GameUI/GameState/MarginContainer/VBoxContainer2/VBoxContainer/ScoreContainer" unique_id=1102374638]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("7_0tnpc")
+theme_override_font_sizes/font_size = 120
+text = "0"
+
+[node name="CoinsContainer" type="HBoxContainer" parent="GameUI/GameState/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=679608113]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="TextureRect" type="TextureRect" parent="GameUI/GameState/MarginContainer/VBoxContainer2/VBoxContainer/CoinsContainer" unique_id=956785955]
+layout_mode = 2
+texture = ExtResource("9_vtaks")
+
+[node name="CoinsLabel" type="Label" parent="GameUI/GameState/MarginContainer/VBoxContainer2/VBoxContainer/CoinsContainer" unique_id=1368208086]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("FontVariation_0tnpc")
+theme_override_font_sizes/font_size = 54
+text = "+0"
+
+[node name="PlayerControls" type="Control" parent="GameUI" unique_id=378020885]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -122,7 +186,7 @@ grow_vertical = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="SwipeButton" type="Button" parent="GameUI/Control/VBoxContainer/Control/PlayerControls" unique_id=1610965566]
+[node name="SwipeButton" type="Button" parent="GameUI/PlayerControls" unique_id=1846063436]
 custom_minimum_size = Vector2(0, 900)
 layout_mode = 1
 anchors_preset = 15
@@ -144,58 +208,36 @@ theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_ca42v")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rysoc")
 script = ExtResource("9_luixn")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/Control/VBoxContainer/Control" unique_id=1543996934]
-layout_mode = 1
+[node name="Pause" type="PanelContainer" parent="GameUI" unique_id=111032554]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 197.0
+offset_bottom = 204.0
 grow_horizontal = 2
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ssvqc")
 
-[node name="MarginContainer" type="MarginContainer" parent="GameUI/Control/VBoxContainer/Control/VBoxContainer" unique_id=2010215646]
+[node name="Margin" type="MarginContainer" parent="GameUI/Pause" unique_id=2049838874]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_right = 40
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
 
-[node name="BackButton" type="Button" parent="GameUI/Control/VBoxContainer/Control/VBoxContainer/MarginContainer" unique_id=1892109625]
-custom_minimum_size = Vector2(128, 80)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "BACK"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/Control/VBoxContainer/Control/VBoxContainer/MarginContainer" unique_id=370418344]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 20
-
-[node name="ScoreLabel" type="Label" parent="GameUI/Control/VBoxContainer/Control/VBoxContainer/MarginContainer/VBoxContainer" unique_id=502616261]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("7_0tnpc")
-theme_override_font_sizes/font_size = 64
-text = "SCORE"
-
-[node name="PointsLabel" type="Label" parent="GameUI/Control/VBoxContainer/Control/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1102374638]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("7_0tnpc")
-theme_override_font_sizes/font_size = 120
-text = "0"
-
-[node name="FpsLabel" type="Label" parent="GameUI/Control/VBoxContainer/Control/VBoxContainer/MarginContainer" unique_id=502616260]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 32
-text = "FPS: 0"
-horizontal_alignment = 2
-script = ExtResource("4_tefeu")
-
-[node name="BottomNotch" type="VSeparator" parent="GameUI/Control/VBoxContainer" unique_id=414123618]
+[node name="VBox" type="VBoxContainer" parent="GameUI/Pause/Margin" unique_id=410212900]
 layout_mode = 2
 mouse_filter = 2
 
-[connection signal="pressed" from="GameUI/Control/VBoxContainer/Control/VBoxContainer/MarginContainer/BackButton" to="GameUI" method="_on_back_button_pressed"]
+[node name="TopNotch" type="VSeparator" parent="GameUI/Pause/Margin/VBox" unique_id=843233416]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_lyscb")
+
+[node name="PauseButton" type="Button" parent="GameUI/Pause/Margin/VBox" unique_id=1564388243]
+custom_minimum_size = Vector2(128, 80)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+text = "PAUSE"
+
+[connection signal="pressed" from="GameUI/Pause/Margin/VBox/PauseButton" to="GameUI" method="_on_back_button_pressed"]

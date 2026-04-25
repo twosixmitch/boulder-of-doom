@@ -8,6 +8,7 @@ func _ready():
 	Events.exit_game.connect(on_exit_game)
 	
 	GameStateService.load_data()
+	WalletService.load_data()
 	
 	go_to_home_screen()
 

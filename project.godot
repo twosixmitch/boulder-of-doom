@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Events="*uid://bi26jmwshkgve"
 GameStateService="*uid://wubb3t5gy8er"
+GameConfig="*res://scripts/autoload/game_config.gd"
 
 [display]
 
@@ -31,11 +32,16 @@ window/stretch/aspect="expand"
 window/handheld/orientation=1
 window/ios/hide_status_bar=false
 
+[filesystem]
+
+import/blender/enabled=false
+
 [global_group]
 
 player=""
 props=""
 hazards=""
+coins=""
 
 [input]
 
@@ -52,11 +58,14 @@ forward={
 3d_physics/layer_3="Props"
 3d_physics/layer_4="Hazard"
 3d_physics/layer_5="Trigger"
+3d_physics/layer_6="Coin"
 3d_physics/layer_9="Inactive Props"
+3d_physics/layer_10="Standby Props"
 
 [physics]
 
 3d/physics_engine="Jolt Physics"
+3d/solver/contact_max_allowed_penetration=0.001
 
 [rendering]
 

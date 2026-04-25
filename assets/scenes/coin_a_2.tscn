@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cgjyk1fba4knn"]
+
+[ext_resource type="PackedScene" uid="uid://bcoj2sulbdh75" path="res://assets/kaykit/source/prototype/Coin_A.gltf" id="1_4wchu"]
+[ext_resource type="Script" uid="uid://demmbhjd7cweo" path="res://scripts/game/world/prop_coin.gd" id="2_vh85r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vh85r"]
+size = Vector3(1, 1, 0.5)
+
+[node name="Coin_A2" unique_id=1472457132 node_paths=PackedStringArray("visuals") instance=ExtResource("1_4wchu")]
+script = ExtResource("2_vh85r")
+visuals = NodePath("Coin_A")
+
+[node name="Area3D" type="Area3D" parent="." index="0" unique_id=614995514 groups=["coins"]]
+collision_layer = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=1341260432]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.009399414)
+shape = SubResource("BoxShape3D_vh85r")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="Area3D" to="." method="_on_body_shape_entered"]

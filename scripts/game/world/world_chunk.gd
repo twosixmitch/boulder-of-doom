@@ -5,6 +5,11 @@ class_name WorldChunk extends Node3D
 @export var end_connection: Node3D
 
 
+func _ready() -> void:
+	if end_connection == null:
+		push_warning("WorldChunk '%s': end_connection is not set — chunk will report zero span." % name)
+
+
 func get_start_global() -> Vector3:
 	return global_position
 

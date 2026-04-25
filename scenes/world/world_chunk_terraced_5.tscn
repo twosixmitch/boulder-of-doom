@@ -297,16 +297,16 @@ transform = Transform3D(0.9993908, 0, -0.03489949, 0, 1, 0, 0.03489949, 0, 0.999
 mesh = SubResource("BoxMesh_jaoeq")
 
 [node name="Hazard" parent="." unique_id=2115359037 instance=ExtResource("6_77mcb")]
-transform = Transform3D(0.9781113, 0.028959475, 0.20605735, 0, 0.9902682, -0.13917312, -0.20808244, 0.1361268, 0.9685925, -1, -2.7631104, 17)
+transform = Transform3D(0.9781476, 0, 0.20791173, 0, 1.0000001, 0, -0.2079117, 0, 0.97814775, -1, -2.7631104, 17)
 
 [node name="Hazard2" parent="." unique_id=1984975033 instance=ExtResource("6_77mcb")]
-transform = Transform3D(0.9635791, -0.03721814, -0.26482078, 0, 0.9902681, -0.13917312, 0.2674234, 0.13410431, 0.9542017, -5.7506676, -3.0395145, 19)
+transform = Transform3D(0.96363044, 0, -0.26723838, 0, 1, 0, 0.26723838, 0, 0.96363044, -5.7506676, -3.0395145, 19)
 
 [node name="Hazard3" parent="." unique_id=512939374 instance=ExtResource("6_77mcb")]
-transform = Transform3D(0.97578335, 0.030442635, 0.21661058, 0, 0.9902682, -0.13917312, -0.21873938, 0.13580282, 0.9662872, -10, -3.2934759, 21)
+transform = Transform3D(0.97591674, 0, 0.21814327, 0, 1.0000001, 0, -0.21814324, 0, 0.97591686, -10, -3.2934759, 21)
 
 [node name="Hazard4" parent="." unique_id=2012342835 instance=ExtResource("6_77mcb")]
-transform = Transform3D(0.9999748, 0.0009886065, 0.0070343004, 0, 0.9902682, -0.13917312, -0.0071034315, 0.13916962, 0.9902432, 12, -5.810888, 39)
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 12, -5.810888, 39)
 
 [node name="Hazard5" parent="." unique_id=1471105148 instance=ExtResource("6_77mcb")]
-transform = Transform3D(1, 0, 0, 0, 0.99026805, -0.1391731, 0, 0.1391731, 0.99026805, 7, -5.83659, 39)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -5.83659, 39)

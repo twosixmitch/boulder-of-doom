@@ -23,7 +23,7 @@ mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_57k3y")
 sleeping = true
 contact_monitor = true
-max_contacts_reported = 1
+max_contacts_reported = 3
 angular_damp = 4.0
 script = ExtResource("1_h62ck")
 prop_type = 2
@@ -51,4 +51,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.886, 0.5, 0)
 mesh = SubResource("BoxMesh_h62ck")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]

@@ -29,7 +29,11 @@ func on_exit_game():
 
 
 func change_screen(path: String):
-	var screen_node = ResourceLoader.load(path).instantiate() as ScreenNode
+	var packed = ResourceLoader.load(path)
+	if not packed:
+		printerr("Failed to load screen: %s" % path)
+		return
+	var screen_node = packed.instantiate() as ScreenNode
 
 	for child in content_parent.get_children():
 		child.queue_free()

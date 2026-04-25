@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://14utadqr604r"]
+
+[ext_resource type="PackedScene" uid="uid://cdq6a0bahimup" path="res://assets/kaykit/source/platformer_green/platform_4x4x1_green.gltf" id="1_ohu5t"]
+[ext_resource type="Material" uid="uid://bm8m6alb8sopa" path="res://assets/materials/dark_prototype_standard_material_3d.tres" id="2_h0vv1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hq8fg"]
+size = Vector3(4, 1, 4)
+
+[node name="platform_4x4x1_green2" unique_id=1846126956 instance=ExtResource("1_ohu5t")]
+
+[node name="platform_4x4x1_green" parent="." index="0" unique_id=414925424]
+material_override = ExtResource("2_h0vv1")
+
+[node name="StaticBody3D" parent="platform_4x4x1_green" index="0" unique_id=105979376]
+collision_layer = 2
+collision_mask = 271
+
+[node name="CollisionShape3D" parent="platform_4x4x1_green/StaticBody3D" index="0" unique_id=802820975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0107421875, 0.5, 0)
+shape = SubResource("BoxShape3D_hq8fg")

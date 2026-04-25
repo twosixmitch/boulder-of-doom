@@ -6,12 +6,27 @@ const DATA_FILE_PATH = "user://data/game.dat"
 var game_state: GameState
 
 
+func _ready() -> void:
+	game_state = GameState.new()
+
+
 func get_highscore() -> int:
 	return game_state.current_highscore
 
 
 func set_highscore(new_highscore: int) -> void:
 	game_state.current_highscore = new_highscore
+
+
+func get_run_history() -> Array[RunRecord]:
+	return game_state.run_history
+
+
+func add_run(run: RunRecord) -> void:
+	game_state.run_history.append(run)
+	# Keep history capped so the save file doesn't grow unbounded.
+	while game_state.run_history.size() > GameConfig.max_run_history:
+		game_state.run_history.pop_front()
 
 
 func load_data() -> void:

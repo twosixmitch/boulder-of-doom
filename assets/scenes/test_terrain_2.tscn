@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c7n6sobk0o2aw"]
+
+[ext_resource type="PackedScene" uid="uid://dnj13cg23yg2d" path="res://blender/test_terrain_2.glb" id="1_xjqvi"]
+[ext_resource type="Material" uid="uid://bm8m6alb8sopa" path="res://assets/materials/dark_prototype_standard_material_3d.tres" id="2_jnxrv"]
+
+[node name="test_terrain_2" unique_id=1942655500 instance=ExtResource("1_xjqvi")]
+
+[node name="Cube_002" parent="." index="0" unique_id=784195298]
+material_override = ExtResource("2_jnxrv")
+
+[node name="StaticBody3D" parent="Cube_002" index="0" unique_id=1948282143]
+collision_layer = 2
+collision_mask = 261

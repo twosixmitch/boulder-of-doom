@@ -1,10 +1,5 @@
 extends Button
 
-@export var tap_max_time_ms: int = 180
-@export var tap_max_move_px: float = 24.0
-@export var swipe_deadzone_px: float = 12.0
-@export var max_swipe_px: float = 180.0
-
 var _active_touch_id: int = -1
 var _touch_start_pos: Vector2 = Vector2.ZERO
 var _touch_current_pos: Vector2 = Vector2.ZERO
@@ -53,10 +48,7 @@ func _handle_screen_touch(event: InputEventScreenTouch) -> void:
 		return
 
 	_touch_current_pos = event.position
-	var move_dist := _touch_current_pos.distance_to(_touch_start_pos)
-	var touch_elapsed_ms := Time.get_ticks_msec() - _touch_start_time_ms
-	var is_tap := touch_elapsed_ms <= tap_max_time_ms and move_dist <= tap_max_move_px
-	if is_tap:
+	if _is_tap(Time.get_ticks_msec() - _touch_start_time_ms, _touch_current_pos.distance_to(_touch_start_pos)):
 		Events.player_jump_requested.emit()
 
 	_reset_touch_state()
@@ -67,15 +59,7 @@ func _handle_screen_drag(event: InputEventScreenDrag) -> void:
 		return
 
 	_touch_current_pos = event.position
-	var delta_x := _touch_current_pos.x - _touch_start_pos.x
-	var abs_delta_x := absf(delta_x)
-
-	if abs_delta_x <= swipe_deadzone_px:
-		_set_steer_axis(0.0)
-		return
-
-	var steer := clampf(-delta_x / maxf(max_swipe_px, 1.0), -1.0, 1.0)
-	_set_steer_axis(steer)
+	_steer_from_drag(_touch_current_pos.x - _touch_start_pos.x)
 
 
 func _handle_mouse_button(event: InputEventMouseButton) -> void:
@@ -96,10 +80,7 @@ func _handle_mouse_button(event: InputEventMouseButton) -> void:
 		return
 
 	_touch_current_pos = event.position
-	var move_dist := _touch_current_pos.distance_to(_touch_start_pos)
-	var touch_elapsed_ms := Time.get_ticks_msec() - _touch_start_time_ms
-	var is_tap := touch_elapsed_ms <= tap_max_time_ms and move_dist <= tap_max_move_px
-	if is_tap:
+	if _is_tap(Time.get_ticks_msec() - _touch_start_time_ms, _touch_current_pos.distance_to(_touch_start_pos)):
 		Events.player_jump_requested.emit()
 
 	_mouse_active = false
@@ -111,15 +92,18 @@ func _handle_mouse_motion(event: InputEventMouseMotion) -> void:
 		return
 
 	_touch_current_pos = event.position
-	var delta_x := _touch_current_pos.x - _touch_start_pos.x
-	var abs_delta_x := absf(delta_x)
+	_steer_from_drag(_touch_current_pos.x - _touch_start_pos.x)
 
-	if abs_delta_x <= swipe_deadzone_px:
+
+func _is_tap(elapsed_ms: int, move_dist: float) -> bool:
+	return elapsed_ms <= GameConfig.swipe_tap_max_time_ms and move_dist <= GameConfig.swipe_tap_max_move_px
+
+
+func _steer_from_drag(delta_x: float) -> void:
+	if absf(delta_x) <= GameConfig.swipe_deadzone_px:
 		_set_steer_axis(0.0)
 		return
-
-	var steer := clampf(-delta_x / maxf(max_swipe_px, 1.0), -1.0, 1.0)
-	_set_steer_axis(steer)
+	_set_steer_axis(clampf(-delta_x / maxf(GameConfig.swipe_max_px, 1.0), -1.0, 1.0))
 
 
 func _set_steer_axis(value: float) -> void:

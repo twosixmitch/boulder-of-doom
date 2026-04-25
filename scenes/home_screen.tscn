@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dt3e7huqgfiht" path="res://scripts/screens/home_screen.gd" id="1_ujmiq"]
 [ext_resource type="FontFile" uid="uid://dguyqkkf5cegy" path="res://fonts/Poppins-Medium.ttf" id="2_bie51"]
-[ext_resource type="Texture2D" uid="uid://cw76mcnfadk8i" path="res://assets/textures/prototype/Dark/texture_01.png" id="2_ekxnf"]
 [ext_resource type="FontFile" uid="uid://cjt3fko3sqc5d" path="res://fonts/Poppins-Bold.ttf" id="3_ih2x6"]
+[ext_resource type="PackedScene" uid="uid://cw3tcrgps38xm" path="res://assets/scenes/mannequin_medium.tscn" id="4_bie51"]
+[ext_resource type="Environment" uid="uid://bocnhxlx36fyi" path="res://assets/game_environment.tres" id="4_ked1l"]
+[ext_resource type="Material" uid="uid://bm8m6alb8sopa" path="res://assets/materials/dark_prototype_standard_material_3d.tres" id="5_ih2x6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sr2rt"]
 bg_color = Color(0.41457415, 0.3224528, 0.5395441, 1)
@@ -42,11 +44,6 @@ corner_detail = 20
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4takm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pn685"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tefeu"]
-albedo_texture = ExtResource("2_ekxnf")
-
-[sub_resource type="SphereMesh" id="SphereMesh_sgp6g"]
 
 [node name="Node" type="Node" unique_id=548747285 node_paths=PackedStringArray("highscore_label")]
 script = ExtResource("1_ujmiq")
@@ -125,16 +122,24 @@ layout_mode = 2
 
 [node name="World" type="Node3D" parent="." unique_id=1312527538]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World" unique_id=638268955]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World" unique_id=1626079771]
+transform = Transform3D(1, 0, 0, 0, 0.9427056, 0.33362588, 0, -0.33362588, 0.9427056, 0, 8.694931, 0)
 
-[node name="Camera3D" type="Camera3D" parent="World" unique_id=1982290166]
-transform = Transform3D(1, 0, 0, 0, 0.9676343, 0.25235647, 0, -0.25235647, 0.9676343, 0, 0.5243039, 1.9123561)
+[node name="Camera3D" type="Camera3D" parent="World" unique_id=1102755213]
+transform = Transform3D(1, 0, 0, 0, 0.99009246, 0.14041738, 0, -0.14041738, 0.99009246, 0, 2.7901106, 7.0602446)
+environment = ExtResource("4_ked1l")
+fov = 60.0
 
-[node name="Player" type="Node3D" parent="World" unique_id=2002366403]
+[node name="Mannequin_Medium" parent="World" unique_id=1538339069 instance=ExtResource("4_bie51")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.492, -0.483)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Player" unique_id=460655095]
-material_override = SubResource("StandardMaterial3D_tefeu")
-mesh = SubResource("SphereMesh_sgp6g")
+[node name="CSGBox3D" type="CSGBox3D" parent="World" unique_id=1807529870]
+size = Vector3(5, 1, 5)
+material = ExtResource("5_ih2x6")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="World" unique_id=1472829376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25012207, -1.512681, 1.0688477)
+size = Vector3(10, 2, 8)
+material = ExtResource("5_ih2x6")
 
 [connection signal="pressed" from="Control/VBoxContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

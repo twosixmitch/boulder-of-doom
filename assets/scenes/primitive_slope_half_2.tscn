@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bii6b74c06j4e"]
+
+[ext_resource type="PackedScene" uid="uid://ctekn3p6j4622" path="res://assets/kaykit/source/prototype/Primitive_Slope_Half.gltf" id="1_bld1n"]
+[ext_resource type="Material" uid="uid://bm8m6alb8sopa" path="res://assets/materials/dark_prototype_standard_material_3d.tres" id="2_1flpo"]
+
+[node name="Primitive_Slope_Half2" unique_id=1662753225 instance=ExtResource("1_bld1n")]
+
+[node name="Primitive_Slope_Half" parent="." index="0" unique_id=2025124552]
+material_override = ExtResource("2_1flpo")

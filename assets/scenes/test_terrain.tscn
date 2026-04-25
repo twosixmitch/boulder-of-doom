@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://i70eo7738jlh"]
+
+[ext_resource type="PackedScene" uid="uid://c25uojpdy478d" path="res://blender/test_terrain.glb" id="1_2q4om"]
+[ext_resource type="Material" uid="uid://bm8m6alb8sopa" path="res://assets/materials/dark_prototype_standard_material_3d.tres" id="2_h21er"]
+
+[node name="test_terrain" unique_id=1707829066 instance=ExtResource("1_2q4om")]
+
+[node name="Plane" parent="." index="0" unique_id=1483779044]
+material_override = ExtResource("2_h21er")
+
+[node name="StaticBody3D" parent="Plane" index="0" unique_id=1658009873]
+collision_layer = 2
+collision_mask = 271

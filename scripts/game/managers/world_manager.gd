@@ -3,26 +3,25 @@ class_name WorldManager extends Node
 @export var player_controller: Node3D
 
 @export var terrain_chunk_scenes: Array[PackedScene] = [
+	preload("res://scenes/world/world_chunk_terraced_start.tscn"),
+	preload("res://scenes/world/world_chunk_terraced_9.tscn"),
+	preload("res://scenes/world/world_chunk_terraced_7.tscn"),
+
 	preload("res://scenes/world/world_chunk_terraced_1.tscn"),
+
+	preload("res://scenes/world/world_chunk_terraced_8.tscn"),
+
 	preload("res://scenes/world/world_chunk_terraced_2.tscn"),
 	preload("res://scenes/world/world_chunk_terraced_3.tscn"),
 	preload("res://scenes/world/world_chunk_terraced_4.tscn"),
 	preload("res://scenes/world/world_chunk_terraced_5.tscn"),
+	#preload("res://scenes/world/world_chunk_terraced_6.tscn"),
 ]
-
-@export var chunks_ahead_buffer: int = 2
-@export var chunks_behind_keep: int = 1
-
-## Fallback span (world Z) for buffer/cleanup when no chunk has been measured yet.
-@export var fallback_forward_span: float = 30.0
-
-@export var spawn_pitch_deg: float = 22.0
-@export var rotate_in_duration: float = 4.0
 
 var _chunks: Array[WorldChunk] = []
 ## Next chunk is placed with its origin at this world position (previous chunk's end connection).
 var _next_connection_global: Vector3 = Vector3.ZERO
-## Next index in `terrain_chunk_scenes` (0 = chunk_1, 1 = chunk_2, 2 = chunk_3, then wraps).
+## Next index into terrain_chunk_scenes. Starts at 0 (start chunk), then loops from world_start_only_count onward.
 var _next_chunk_pattern_index: int = 0
 
 
@@ -41,7 +40,8 @@ func _ready() -> void:
 		_sort_chunks_by_start_z()
 		var last_chunk := _chunks[_chunks.size() - 1]
 		_next_connection_global = last_chunk.get_end_global()
-		_next_chunk_pattern_index = _chunks.size() % scenes.size()
+		var raw := _chunks.size() % scenes.size()
+		_next_chunk_pattern_index = raw if raw > 0 else GameConfig.world_start_only_count
 
 	_ensure_chunks_ahead(false)
 
@@ -70,9 +70,8 @@ func _sort_chunks_by_start_z() -> void:
 func _ensure_chunks_ahead(animate_new_chunks: bool = true) -> void:
 	if player_controller == null:
 		return
-		
-	var player_pos := _get_player_position()
 
+	var player_pos := _get_player_position()
 	var player_z := player_pos.z
 	var buffer_z := _estimate_forward_buffer_z()
 	var target_frontier_z := player_z + buffer_z
@@ -80,7 +79,6 @@ func _ensure_chunks_ahead(animate_new_chunks: bool = true) -> void:
 	while _get_last_chunk_end_z() < target_frontier_z:
 		var end_z_before := _get_last_chunk_end_z()
 		_spawn_chunk(animate_new_chunks)
-		# Safety: zero-length chunk / bad end_connection would not advance the frontier.
 		if _get_last_chunk_end_z() <= end_z_before + 0.0001:
 			break
 
@@ -90,11 +88,11 @@ func _estimate_forward_span() -> float:
 		var span := _chunks[_chunks.size() - 1].get_forward_span_local()
 		if span > 0.001:
 			return span
-	return fallback_forward_span
+	return GameConfig.world_fallback_span
 
 
 func _estimate_forward_buffer_z() -> float:
-	return _estimate_forward_span() * float(maxi(chunks_ahead_buffer, 1))
+	return _estimate_forward_span() * float(maxi(GameConfig.world_chunks_ahead, 1))
 
 
 func _get_last_chunk_end_z() -> float:
@@ -107,7 +105,7 @@ func _cleanup_old_chunks() -> void:
 	if player_controller == null or _chunks.is_empty():
 		return
 
-	var keep_span := _estimate_forward_span() * float(maxi(chunks_behind_keep, 1))
+	var keep_span := _estimate_forward_span() * float(maxi(GameConfig.world_chunks_behind_keep, 1))
 	var min_keep_z := _get_player_position().z - keep_span
 
 	for i in range(_chunks.size() - 1, -1, -1):
@@ -141,7 +139,9 @@ func _spawn_chunk(animate_rotate_in: bool = true) -> void:
 	chunk.global_position = _next_connection_global
 	_chunks.append(chunk)
 	_next_connection_global = chunk.get_end_global()
-	_next_chunk_pattern_index = (_next_chunk_pattern_index + 1) % scenes.size()
+	_next_chunk_pattern_index += 1
+	if _next_chunk_pattern_index >= scenes.size():
+		_next_chunk_pattern_index = GameConfig.world_start_only_count
 
 	if animate_rotate_in:
 		_animate_chunk_rotate_in(chunk)
@@ -156,21 +156,17 @@ func _get_valid_chunk_scenes() -> Array[PackedScene]:
 
 
 func _animate_chunk_rotate_in(chunk: Node3D) -> void:
-	if rotate_in_duration <= 0.0:
+	if GameConfig.world_rotate_in_duration <= 0.0:
 		return
 
-	chunk.rotation_degrees.x = spawn_pitch_deg
+	chunk.rotation_degrees.x = GameConfig.world_spawn_pitch_deg
 	var tween := create_tween()
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.set_ease(Tween.EASE_OUT)
-	tween.tween_property(chunk, "rotation_degrees:x", 0.0, rotate_in_duration)
-	
+	tween.tween_property(chunk, "rotation_degrees:x", 0.0, GameConfig.world_rotate_in_duration)
+
 
 func _get_player_position() -> Vector3:
-	var player_pos := Vector3.ZERO
 	if player_controller.has_method("get_player_position"):
-		player_pos = player_controller.get_player_position()
-	else:
-		player_pos = player_controller.global_position
-	return player_pos
-	
+		return player_controller.get_player_position()
+	return player_controller.global_position

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://fejyru3ih4g3"]
+
+[ext_resource type="PackedScene" uid="uid://blhg5nrlk3aet" path="res://assets/kaykit/source/platformer_green/platform_slope_4x6x4_green.gltf" id="1_0kth4"]
+[ext_resource type="Material" uid="uid://bm8m6alb8sopa" path="res://assets/materials/dark_prototype_standard_material_3d.tres" id="2_kl1wv"]
+
+[node name="platform_slope_4x6x4_green2" unique_id=641108337 instance=ExtResource("1_0kth4")]
+
+[node name="platform_slope_4x6x4_green" parent="." index="0" unique_id=1212989791]
+material_override = ExtResource("2_kl1wv")

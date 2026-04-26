@@ -23,7 +23,7 @@ func _exit_tree():
 	Events.hit_coin.disconnect(on_hit_coin)
 
 
-func on_screen_enter():
+func on_screen_enter(_context: ScreenContext):
 	player_controller.start_running()
 
 
@@ -52,7 +52,7 @@ func on_hit_hazard(world_position: Vector3):
 
 	_game_over_timer = get_tree().create_timer(GameConfig.game_over_delay_sec)
 	_game_over_timer.timeout.connect(func() -> void:
-		Events.exit_game.emit()
+		Events.game_complete.emit(run)
 	)
 
 

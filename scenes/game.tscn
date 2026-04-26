@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://b7tx20w1crvj6" path="res://scripts/game/managers/world_manager.gd" id="4_tbgi4"]
 [ext_resource type="Script" uid="uid://duwh68pwgeean" path="res://scripts/game/game_ui/fps_counter.gd" id="4_tefeu"]
 [ext_resource type="PackedScene" uid="uid://cl4kmc81qgki6" path="res://scenes/game/ui/prop_points.tscn" id="6_gee14"]
-[ext_resource type="FontFile" uid="uid://co3q40yj1rl36" path="res://fonts/Bangers-Regular.ttf" id="7_0tnpc"]
+[ext_resource type="FontFile" uid="uid://cifeighgy2qgm" path="res://fonts/LilitaOne-Regular.ttf" id="8_kvpfn"]
 [ext_resource type="Script" uid="uid://cdqvq6rwiub5t" path="res://scripts/game/controls/swipe_controls.gd" id="9_luixn"]
 [ext_resource type="Texture2D" uid="uid://dfueh7ceyt1jp" path="res://images/icon_coin.png" id="9_vtaks"]
 
@@ -22,7 +22,7 @@ fog_depth_end = 250.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lyscb"]
 
 [sub_resource type="FontVariation" id="FontVariation_0tnpc"]
-base_font = ExtResource("7_0tnpc")
+base_font = ExtResource("8_kvpfn")
 spacing_glyph = 2
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u5sy4"]
@@ -157,7 +157,7 @@ text = "SCORE"
 [node name="PointsLabel" type="Label" parent="GameUI/GameState/MarginContainer/VBoxContainer2/VBoxContainer/ScoreContainer" unique_id=1102374638]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("7_0tnpc")
+theme_override_fonts/font = ExtResource("8_kvpfn")
 theme_override_font_sizes/font_size = 120
 text = "0"
 

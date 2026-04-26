@@ -1,23 +1,37 @@
 [gd_scene format=3 uid="uid://b64lgdu13yhmh"]
 
-[ext_resource type="Script" uid="uid://dt3e7huqgfiht" path="res://scripts/screens/home_screen.gd" id="1_ujmiq"]
-[ext_resource type="FontFile" uid="uid://co3q40yj1rl36" path="res://fonts/Bangers-Regular.ttf" id="2_ih2x6"]
+[ext_resource type="Script" uid="uid://dt3e7huqgfiht" path="res://scripts/screens/home/home_screen.gd" id="1_ujmiq"]
+[ext_resource type="FontFile" uid="uid://cifeighgy2qgm" path="res://fonts/LilitaOne-Regular.ttf" id="2_b02wa"]
 [ext_resource type="Texture2D" uid="uid://dfueh7ceyt1jp" path="res://images/icon_coin.png" id="3_ked1l"]
 [ext_resource type="PackedScene" uid="uid://cw3tcrgps38xm" path="res://assets/scenes/mannequin_medium.tscn" id="4_bie51"]
 [ext_resource type="Environment" uid="uid://bocnhxlx36fyi" path="res://assets/game_environment.tres" id="4_ked1l"]
 [ext_resource type="Material" uid="uid://bm8m6alb8sopa" path="res://assets/materials/dark_prototype_standard_material_3d.tres" id="5_ih2x6"]
 
-[sub_resource type="FontVariation" id="FontVariation_ked1l"]
-base_font = ExtResource("2_ih2x6")
-spacing_glyph = 2
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b02wa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_15ihl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ked1l"]
 
 [sub_resource type="FontVariation" id="FontVariation_ih2x6"]
-base_font = ExtResource("2_ih2x6")
+base_font = ExtResource("2_b02wa")
+spacing_glyph = 6
+
+[sub_resource type="FontVariation" id="FontVariation_ked1l"]
+base_font = ExtResource("2_b02wa")
 spacing_glyph = 2
 
 [sub_resource type="FontVariation" id="FontVariation_b02wa"]
-base_font = ExtResource("2_ih2x6")
+base_font = ExtResource("2_b02wa")
 spacing_glyph = 2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_airqx"]
+
+[sub_resource type="FontVariation" id="FontVariation_15ihl"]
+base_font = ExtResource("2_b02wa")
+
+[sub_resource type="FontVariation" id="FontVariation_airqx"]
+base_font = ExtResource("2_b02wa")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sr2rt"]
 bg_color = Color(0.41457415, 0.3224528, 0.5395441, 1)
@@ -57,12 +71,13 @@ corner_detail = 20
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pn685"]
 
-[node name="Node" type="Node" unique_id=548747285 node_paths=PackedStringArray("highscore_label", "coins_label")]
+[node name="HomeScreen" type="Node" unique_id=548747285 node_paths=PackedStringArray("highscore_label", "coins_label", "play_button")]
 script = ExtResource("1_ujmiq")
-highscore_label = NodePath("Control/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Control/HBoxContainer/HighscoreValue")
-coins_label = NodePath("Control/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Control/HBoxContainer2/CoinsLabel")
+highscore_label = NodePath("UI/VBox/Margin/General/Score&Wallet/HBoxContainer/HighscoreValue")
+coins_label = NodePath("UI/VBox/Margin/General/Score&Wallet/HBoxContainer2/CoinsLabel")
+play_button = NodePath("UI/VBox/Margin/PlayButton")
 
-[node name="Control" type="Control" parent="." unique_id=1504039224]
+[node name="UI" type="Control" parent="." unique_id=1504039224]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -70,82 +85,153 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=235464383]
+[node name="VBox" type="VBoxContainer" parent="UI" unique_id=235464383]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
 
-[node name="TopNotch" type="VSeparator" parent="Control/VBoxContainer" unique_id=1250110239]
+[node name="TopNotch" type="VSeparator" parent="UI/VBox" unique_id=1250110239]
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_b02wa")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer" unique_id=1260508847]
+[node name="Margin" type="MarginContainer" parent="UI/VBox" unique_id=1260508847]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 40
+theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 40
+theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 80
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/MarginContainer" unique_id=749919349]
+[node name="General" type="VBoxContainer" parent="UI/VBox/Margin" unique_id=749919349]
 layout_mode = 2
-alignment = 2
+theme_override_constants/separation = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/MarginContainer/VBoxContainer" unique_id=329119506]
+[node name="VSeparator" type="VSeparator" parent="UI/VBox/Margin/General" unique_id=1532854098]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-size_flags_vertical = 2
-theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_15ihl")
 
-[node name="Control" type="Control" parent="Control/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=489807352]
+[node name="Score&Wallet" type="PanelContainer" parent="UI/VBox/Margin/General" unique_id=610887560]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ked1l")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Control" unique_id=819847760]
-layout_mode = 1
-offset_right = 1099.0
-offset_bottom = 103.0
-theme_override_constants/separation = 48
-
-[node name="HighscoreLabel" type="Label" parent="Control/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Control/HBoxContainer" unique_id=1281963356]
+[node name="HBoxContainer" type="VBoxContainer" parent="UI/VBox/Margin/General/Score&Wallet" unique_id=26468015]
 layout_mode = 2
-theme_override_fonts/font = SubResource("FontVariation_ked1l")
-theme_override_font_sizes/font_size = 54
-text = "HIGHSCORE"
-horizontal_alignment = 1
+theme_override_constants/separation = 32
 
-[node name="HighscoreValue" type="Label" parent="Control/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Control/HBoxContainer" unique_id=1006376797]
+[node name="HighscoreValue" type="Label" parent="UI/VBox/Margin/General/Score&Wallet/HBoxContainer" unique_id=1006376797]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 16
+theme_override_constants/shadow_outline_size = 16
 theme_override_fonts/font = SubResource("FontVariation_ih2x6")
-theme_override_font_sizes/font_size = 96
-text = "12,000"
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 60
+text = "128,000"
+vertical_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Control" unique_id=246039728]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1099.0
-offset_bottom = 103.0
-grow_horizontal = 0
+[node name="HighscoreLabel" type="Label" parent="UI/VBox/Margin/General/Score&Wallet/HBoxContainer" unique_id=1281963356]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 12
+theme_override_constants/shadow_outline_size = 12
+theme_override_fonts/font = SubResource("FontVariation_ked1l")
+theme_override_font_sizes/font_size = 42
+text = "highscore"
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/VBox/Margin/General/Score&Wallet" unique_id=246039728]
+layout_mode = 2
 theme_override_constants/separation = 32
 alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Control/HBoxContainer2" unique_id=1605226364]
+[node name="TextureRect" type="TextureRect" parent="UI/VBox/Margin/General/Score&Wallet/HBoxContainer2" unique_id=1605226364]
 layout_mode = 2
 texture = ExtResource("3_ked1l")
 stretch_mode = 5
 
-[node name="CoinsLabel" type="Label" parent="Control/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Control/HBoxContainer2" unique_id=846413380]
+[node name="CoinsLabel" type="Label" parent="UI/VBox/Margin/General/Score&Wallet/HBoxContainer2" unique_id=846413380]
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_b02wa")
 theme_override_font_sizes/font_size = 54
 text = "12,000"
 
-[node name="PlayButton" type="Button" parent="Control/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1220639976]
-custom_minimum_size = Vector2(0, 256)
+[node name="Results" type="PanelContainer" parent="UI/VBox/Margin/General" unique_id=1008485982]
 layout_mode = 2
+size_flags_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_airqx")
+
+[node name="Margin" type="MarginContainer" parent="UI/VBox/Margin/General/Results" unique_id=30711270]
+layout_mode = 2
+theme_override_constants/margin_top = 180
+
+[node name="CoinsContainer" type="VBoxContainer" parent="UI/VBox/Margin/General/Results/Margin" unique_id=361344184]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="CoinsCollectedLabel" type="Label" parent="UI/VBox/Margin/General/Results/Margin/CoinsContainer" unique_id=2011304150]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_15ihl")
+theme_override_font_sizes/font_size = 72
+text = "COINS
+COLLECTED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBox/Margin/General/Results/Margin/CoinsContainer" unique_id=183186115]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="CoinsValueLabel" type="Label" parent="UI/VBox/Margin/General/Results/Margin/CoinsContainer/HBoxContainer" unique_id=902198706]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_airqx")
+theme_override_font_sizes/font_size = 180
+text = "+ 12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="UI/VBox/Margin/General/Results/Margin/CoinsContainer/HBoxContainer" unique_id=574141798]
+layout_mode = 2
+texture = ExtResource("3_ked1l")
+stretch_mode = 5
+
+[node name="ScoreContainer" type="VBoxContainer" parent="UI/VBox/Margin/General/Results/Margin" unique_id=858424917]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="ScoreLabel" type="Label" parent="UI/VBox/Margin/General/Results/Margin/ScoreContainer" unique_id=12460963]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_15ihl")
+theme_override_font_sizes/font_size = 72
+text = "
+SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ValueLabel" type="Label" parent="UI/VBox/Margin/General/Results/Margin/ScoreContainer" unique_id=186095802]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_airqx")
+theme_override_font_sizes/font_size = 180
+text = "12,498"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="UI/VBox/Margin" unique_id=1220639976]
+custom_minimum_size = Vector2(800, 240)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 72
 theme_override_styles/normal = SubResource("StyleBoxFlat_sr2rt")
@@ -161,7 +247,7 @@ theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_4takm")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_pn685")
 text = "PLAY"
 
-[node name="BottomNotch" type="VSeparator" parent="Control/VBoxContainer" unique_id=476467676]
+[node name="BottomNotch" type="VSeparator" parent="UI/VBox" unique_id=476467676]
 layout_mode = 2
 
 [node name="World" type="Node3D" parent="." unique_id=1312527538]
@@ -186,4 +272,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25012207, -1.512681, 1.068
 size = Vector3(10, 2, 8)
 material = ExtResource("5_ih2x6")
 
-[connection signal="pressed" from="Control/VBoxContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="UI/VBox/Margin/PlayButton" to="." method="_on_play_button_pressed"]

@@ -6,7 +6,9 @@ signal start_new_game
 signal start_new_game_scene(scene_num: int)
 
 @warning_ignore("unused_signal")
-signal exit_game
+signal game_exited
+@warning_ignore("unused_signal")
+signal game_complete(run_record: RunRecord)
 
 @warning_ignore("unused_signal")
 signal hit_hazard(hazard_position: Vector3)

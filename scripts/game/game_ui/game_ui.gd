@@ -23,5 +23,4 @@ func display_point(amount: int, world_position: Vector3) -> void:
 
 
 func _on_back_button_pressed():
-	print("_on_back_button_pressed")
-	Events.exit_game.emit()
+	Events.game_exited.emit()

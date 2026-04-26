@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cjt3fko3sqc5d"
-path="res://.godot/imported/Poppins-Bold.ttf-e1937fa2f1fc7ec3ccf23981ea6b4316.fontdata"
+uid="uid://cifeighgy2qgm"
+path="res://.godot/imported/LilitaOne-Regular.ttf-150579ea79b262716ec303b5070fa68e.fontdata"
 
 [deps]
 
-source_file="res://fonts/Poppins-Bold.ttf"
-dest_files=["res://.godot/imported/Poppins-Bold.ttf-e1937fa2f1fc7ec3ccf23981ea6b4316.fontdata"]
+source_file="res://fonts/LilitaOne-Regular.ttf"
+dest_files=["res://.godot/imported/LilitaOne-Regular.ttf-150579ea79b262716ec303b5070fa68e.fontdata"]
 
 [params]
 

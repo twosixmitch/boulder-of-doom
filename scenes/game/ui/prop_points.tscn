@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://cl4kmc81qgki6"]
 
-[ext_resource type="FontFile" uid="uid://co3q40yj1rl36" path="res://fonts/Bangers-Regular.ttf" id="1_0yier"]
+[ext_resource type="FontFile" uid="uid://cifeighgy2qgm" path="res://fonts/LilitaOne-Regular.ttf" id="1_0yier"]
 [ext_resource type="Script" uid="uid://b60mrg4cvbrnh" path="res://scripts/game/game_ui/prop_points.gd" id="1_1re77"]
+
+[sub_resource type="FontVariation" id="FontVariation_sq0oc"]
+base_font = ExtResource("1_0yier")
 
 [node name="FloatingScorePopup" type="Label" unique_id=1348708287]
 anchors_preset = 8
@@ -18,7 +21,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.8509804, 0.23921569, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("1_0yier")
+theme_override_fonts/font = SubResource("FontVariation_sq0oc")
 theme_override_font_sizes/font_size = 72
 text = "1"
 horizontal_alignment = 1

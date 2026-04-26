@@ -5,7 +5,8 @@ extends Node
 func _ready():
 	Events.start_new_game.connect(on_start_new_game)
 	Events.start_new_game_scene.connect(on_start_new_game_scene)
-	Events.exit_game.connect(on_exit_game)
+	Events.game_exited.connect(on_game_exited)
+	Events.game_complete.connect(on_game_complete)
 	
 	GameStateService.load_data()
 	WalletService.load_data()
@@ -25,7 +26,11 @@ func on_start_new_game_scene(scene_num: int):
 	change_screen("res://scenes/game_%s.tscn" % scene_num)
 
 
-func on_exit_game():
+func on_game_exited():
+	go_to_home_screen()
+
+
+func on_game_complete(_run_record: RunRecord):
 	go_to_home_screen()
 
 
@@ -44,4 +49,4 @@ func change_screen(path: String):
 	# Allow the system to resize content so calling `.size` returns valid data.
 	await get_tree().process_frame
 	
-	screen_node.on_screen_enter()
+	screen_node.on_screen_enter(null)

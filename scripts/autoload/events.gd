@@ -2,13 +2,14 @@ extends Node
 
 @warning_ignore("unused_signal")
 signal start_new_game
-@warning_ignore("unused_signal")
-signal start_new_game_scene(scene_num: int)
 
 @warning_ignore("unused_signal")
 signal game_exited
 @warning_ignore("unused_signal")
-signal game_complete(run_record: RunRecord)
+signal game_complete(run_record: RunRecord, is_highscore: bool)
+
+@warning_ignore("unused_signal")
+signal results_complete
 
 @warning_ignore("unused_signal")
 signal hit_hazard(hazard_position: Vector3)

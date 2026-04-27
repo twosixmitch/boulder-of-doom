@@ -14,8 +14,11 @@ func get_highscore() -> int:
 	return game_state.current_highscore
 
 
-func set_highscore(new_highscore: int) -> void:
-	game_state.current_highscore = new_highscore
+func update_highscore(new_score: int) -> bool:
+	if new_score > game_state.current_highscore:
+		game_state.current_highscore = new_score
+		return true
+	return false
 
 
 func get_run_history() -> Array[RunRecord]:

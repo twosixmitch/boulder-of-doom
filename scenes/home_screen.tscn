@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://b64lgdu13yhmh"]
 
 [ext_resource type="Script" uid="uid://dt3e7huqgfiht" path="res://scripts/screens/home/home_screen.gd" id="1_ujmiq"]
+[ext_resource type="Script" uid="uid://bys0t8o3lh0k6" path="res://scripts/screens/shared/device_notch_top_view.gd" id="2_15ihl"]
 [ext_resource type="FontFile" uid="uid://cifeighgy2qgm" path="res://fonts/LilitaOne-Regular.ttf" id="2_b02wa"]
 [ext_resource type="Texture2D" uid="uid://dfueh7ceyt1jp" path="res://images/icon_coin.png" id="3_ked1l"]
 [ext_resource type="PackedScene" uid="uid://cw3tcrgps38xm" path="res://assets/scenes/mannequin_medium.tscn" id="4_bie51"]
 [ext_resource type="Environment" uid="uid://bocnhxlx36fyi" path="res://assets/game_environment.tres" id="4_ked1l"]
+[ext_resource type="Script" uid="uid://bwtbstgyehgut" path="res://scripts/screens/home/results_view.gd" id="5_15ihl"]
 [ext_resource type="Material" uid="uid://bm8m6alb8sopa" path="res://assets/materials/dark_prototype_standard_material_3d.tres" id="5_ih2x6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b02wa"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_15ihl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ked1l"]
 
@@ -71,11 +71,12 @@ corner_detail = 20
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pn685"]
 
-[node name="HomeScreen" type="Node" unique_id=548747285 node_paths=PackedStringArray("highscore_label", "coins_label", "play_button")]
+[node name="HomeScreen" type="Node" unique_id=548747285 node_paths=PackedStringArray("highscore_label", "coins_label", "play_button", "results_view")]
 script = ExtResource("1_ujmiq")
 highscore_label = NodePath("UI/VBox/Margin/General/Score&Wallet/HBoxContainer/HighscoreValue")
 coins_label = NodePath("UI/VBox/Margin/General/Score&Wallet/HBoxContainer2/CoinsLabel")
 play_button = NodePath("UI/VBox/Margin/PlayButton")
+results_view = NodePath("UI/VBox/Margin/General/Results")
 
 [node name="UI" type="Control" parent="." unique_id=1504039224]
 layout_mode = 3
@@ -97,23 +98,19 @@ theme_override_constants/separation = 0
 [node name="TopNotch" type="VSeparator" parent="UI/VBox" unique_id=1250110239]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_b02wa")
+script = ExtResource("2_15ihl")
 
 [node name="Margin" type="MarginContainer" parent="UI/VBox" unique_id=1260508847]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 20
+theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 80
 
 [node name="General" type="VBoxContainer" parent="UI/VBox/Margin" unique_id=749919349]
 layout_mode = 2
 theme_override_constants/separation = 0
-
-[node name="VSeparator" type="VSeparator" parent="UI/VBox/Margin/General" unique_id=1532854098]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_15ihl")
 
 [node name="Score&Wallet" type="PanelContainer" parent="UI/VBox/Margin/General" unique_id=610887560]
 layout_mode = 2
@@ -151,6 +148,7 @@ vertical_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="UI/VBox/Margin/General/Score&Wallet" unique_id=246039728]
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_constants/separation = 32
 alignment = 2
 
@@ -165,10 +163,17 @@ theme_override_fonts/font = SubResource("FontVariation_b02wa")
 theme_override_font_sizes/font_size = 54
 text = "12,000"
 
-[node name="Results" type="PanelContainer" parent="UI/VBox/Margin/General" unique_id=1008485982]
+[node name="Results" type="PanelContainer" parent="UI/VBox/Margin/General" unique_id=1008485982 node_paths=PackedStringArray("results_coins_container", "results_score_container", "results_coins_label", "results_score_label", "player_highscore_label", "player_coins_label")]
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_airqx")
+script = ExtResource("5_15ihl")
+results_coins_container = NodePath("Margin/CoinsContainer")
+results_score_container = NodePath("Margin/ScoreContainer")
+results_coins_label = NodePath("Margin/CoinsContainer/HBoxContainer/CoinsValueLabel")
+results_score_label = NodePath("Margin/ScoreContainer/ValueLabel")
+player_highscore_label = NodePath("../Score&Wallet/HBoxContainer/HighscoreValue")
+player_coins_label = NodePath("../Score&Wallet/HBoxContainer2/CoinsLabel")
 
 [node name="Margin" type="MarginContainer" parent="UI/VBox/Margin/General/Results" unique_id=30711270]
 layout_mode = 2
@@ -207,6 +212,7 @@ texture = ExtResource("3_ked1l")
 stretch_mode = 5
 
 [node name="ScoreContainer" type="VBoxContainer" parent="UI/VBox/Margin/General/Results/Margin" unique_id=858424917]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 64
 

@@ -16,6 +16,10 @@ var _touch_steer_axis: float = 0.0
 var _default_gravity: float = 9.8
 var _was_grounded: bool = false
 
+var _jump_requested: bool = false
+var _jump_reset: bool = false
+var _jump_cooldown: float = 0.0
+
 ## When false (e.g. after hitting a hazard), forward drive, steering, and lateral limits stop applying.
 var _player_controls_active: bool = true
 var _hazard_recovery_remaining: float = 0.0
@@ -59,42 +63,44 @@ func _physics_process(delta: float) -> void:
 	# Over time we are speeding up the Player.
 	_speed_ramp_elapsed += delta
 
-	_log_grounded_changes()
-
-	_apply_jump_gravity_tuning()
-
 	var course_forward := _course_forward()
 	_accelerate_toward_target_speed(course_forward)
-
+	
 	_clamp_lateral_speed()
 	_clamp_course_forward_speed(course_forward)
-
+	
 	_apply_lateral_control(delta)
 
 	visual_model.position = sphere.position - Vector3(0, 0.65, 0)
 	_orient_visual_to_run_direction(delta, course_forward, _steer_axis())
 	_apply_hazard_knockback_recovery(delta)
+	
+	_handle_jump_requests(delta)
 	_clamp_upward_linear_speed()
+	_apply_jump_gravity_tuning()
 
 	linear_velocity = (visual_model.position - prev_position) / delta
 	prev_position = visual_model.position
 
 	_update_animation_speed()
+	
+	
+func _handle_jump_requests(delta: float):
+	if _jump_cooldown > 0.0:
+		_jump_cooldown = maxf(_jump_cooldown - delta, 0.0)
 
-
-func _log_grounded_changes() -> void:
-	if not GameConfig.player_debug_jump_logs:
-		return
-
-	var grounded := raycast.is_colliding()
-	if grounded == _was_grounded:
-		return
-
-	_was_grounded = grounded
-	if grounded:
-		print("[JumpDebug] grounded=", grounded, " y_vel=", sphere.linear_velocity.y)
-	else:
-		print_rich("[color=yellow][JumpDebug] grounded=", grounded, " y_vel=", sphere.linear_velocity.y, "[/color]")
+	if _jump_cooldown == 0.0:
+		#  Check 
+		var grounded := raycast.is_colliding()
+		if grounded:
+			_jump_reset = true
+		
+	if _jump_requested and _jump_reset and _jump_cooldown == 0.0:
+		_jump_reset = false
+		_jump_cooldown = 0.5
+		sphere.apply_central_impulse(Vector3.UP * GameConfig.player_jump_impulse * sphere.mass)
+	
+	_jump_requested = false
 
 
 func _apply_jump_gravity_tuning() -> void:
@@ -281,14 +287,7 @@ func _on_player_steer_changed(axis: float) -> void:
 
 
 func _on_player_jump_requested() -> void:
-	var meets_conditions = raycast.is_colliding()
-
-	if GameConfig.player_debug_jump_logs:
-		print("[JumpDebug] jump_requested CAN=", meets_conditions, " y_vel=", sphere.linear_velocity.y)
-
-	if meets_conditions:
-		sphere.apply_central_impulse(Vector3.UP * GameConfig.player_jump_impulse * sphere.mass)
-		_clamp_upward_linear_speed()
+	_jump_requested = true
 
 
 func _clamp_upward_linear_speed() -> void:
